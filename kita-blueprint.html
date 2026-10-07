@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Kita Blueprint — Private Income Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#100a20;--card:#1a1131;--ink:#f3ecdc;--mut:#a99fc4;--pur:#b69cff;--gold:#e0b04a;--line:#33264f;--lil:#271a45;--glow:rgba(182,156,255,.2);--glow2:rgba(224,176,74,.15);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f1e7;--card:#fffdf8;--ink:#2a1f45;--mut:#6d6486;--pur:#6b4fbb;--gold:#9a6f08;--line:#ddd2ee;--lil:#ece3fa;--glow:rgba(107,79,187,.14);--glow2:rgba(154,111,8,.12)}}
+:root[data-theme="light"]{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a1f45;--mut:#6d6486;--pur:#6b4fbb;--gold:#9a6f08;--line:#ddd2ee;--lil:#ece3fa;--glow:rgba(107,79,187,.14);--glow2:rgba(154,111,8,.12)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'DM Sans',system-ui,sans-serif}
+body::before{content:'';position:fixed;inset:-20%;z-index:-1;background:radial-gradient(40% 35% at 18% 12%,var(--glow),transparent),radial-gradient(35% 30% at 88% 22%,var(--glow2),transparent);animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,6%) scale(1.12)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes pop{40%{transform:scale(1.04)}}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;margin:0;line-height:1.08}
+.wrap{max-width:900px;margin:0 auto;padding:22px 16px 70px}
+.hero{padding:40px 0 28px;border-bottom:1px solid var(--gold);margin-bottom:6px}
+.brand{display:inline-block;color:var(--gold);font-size:14px;margin-bottom:16px;padding:5px 13px;border:1px solid var(--gold);border-radius:99px}
+h1{font-size:clamp(44px,11vw,84px);font-weight:700;letter-spacing:-.03em;background:linear-gradient(100deg,var(--ink) 25%,var(--gold) 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:620px;color:var(--mut);margin:18px 0 0;font-size:18px}
+nav{display:flex;gap:2px;overflow-x:auto;padding:6px 0;position:sticky;top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);z-index:5;border-bottom:1px solid var(--line);margin-bottom:22px}
+nav button{flex:none;position:relative;border:0;background:none;color:var(--mut);padding:11px 14px;font:500 15px 'DM Sans',sans-serif;cursor:pointer;transition:color .25s}
+nav button::after{content:'';position:absolute;left:12px;right:12px;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+nav button[aria-selected=true]{color:var(--gold)}nav button[aria-selected=true]::after{transform:scaleX(1)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.panel{display:none}.panel.on{display:block;animation:rise .5s cubic-bezier(.2,.8,.2,1)}
+h2{font-size:clamp(28px,6vw,40px);margin-bottom:8px}.sub{color:var(--mut);margin:0 0 22px;max-width:640px}
+details{border-top:1px solid var(--line);transition:background .3s}details:last-of-type{border-bottom:1px solid var(--line)}details[open]{background:linear-gradient(90deg,var(--lil),transparent)}
+summary{cursor:pointer;padding:18px 6px;font:600 21px 'Fraunces',Georgia,serif;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:'+';color:var(--gold);font-size:26px;transition:transform .3s}details[open] summary::after{transform:rotate(135deg)}
+details[open]>:not(summary){animation:rise .4s ease both}details p{margin:0 6px 12px;max-width:650px}
+.do{margin:0 6px 20px;padding:13px 15px;background:var(--lil);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;max-width:650px}
+label{display:block;font-weight:700;font-size:14px;margin:16px 0 5px}
+input,select{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;transition:border-color .25s,box-shadow .25s}
+input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 4px var(--glow2)}
+input[type=range]{padding:0;accent-color:var(--gold)}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.btn{margin-top:22px;background:linear-gradient(135deg,var(--gold),#f3d27a);color:#1a1131;border:0;padding:14px 26px;border-radius:10px;font:700 15px 'DM Sans',sans-serif;cursor:pointer;box-shadow:0 8px 24px -10px var(--gold);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px var(--gold)}.btn:active{transform:scale(.96)}
+.btn.alt{background:none;color:var(--gold);border:1px solid var(--gold);margin:10px 0 0;padding:8px 15px;font-size:13px;box-shadow:none}
+.out,.box,.tiers div,.stats div{border:1px solid var(--line);border-radius:14px;background:linear-gradient(160deg,var(--card),transparent);animation:rise .5s ease both}
+.out{margin-top:24px;padding:22px;border-color:var(--gold)}.out h3{font-size:26px;margin-bottom:8px}.out ol{padding-left:20px}
+.box{padding:15px 17px;margin-top:12px;white-space:pre-wrap}.box b{color:var(--gold)}
+.gauge{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.gauge svg{width:150px;height:150px;transform:rotate(-90deg)}
+.gauge circle{fill:none;stroke-width:9;stroke-linecap:round}.gauge .bg{stroke:var(--lil)}.gauge .fg{stroke:var(--gold);stroke-dasharray:326.7;stroke-dashoffset:326.7;transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.2,1)}
+.gwrap{position:relative}.gnum{position:absolute;inset:0;display:grid;place-items:center;font:700 44px 'Fraunces',Georgia,serif;color:var(--gold)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}.tiers div{padding:16px}
+.tiers .mid{border-color:var(--gold);transform:translateY(-4px)}.tiers b{font:700 28px 'Fraunces',Georgia,serif;color:var(--gold);display:block}
+.chips{display:flex;gap:8px;margin-bottom:14px}.chips button{border:1px solid var(--line);background:none;color:var(--ink);padding:8px 16px;border-radius:99px;cursor:pointer;font:500 14px 'DM Sans',sans-serif;transition:all .25s}
+.chips button.on{border-color:var(--gold);color:var(--gold);background:var(--lil)}
+.pr{border-top:1px solid var(--line);padding:16px 0;animation:rise .45s ease both}.pr b{font:600 19px 'Fraunces',Georgia,serif}.pr p{margin:6px 0 0;color:var(--mut);white-space:pre-wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px}.stats div{padding:16px}
+.stats small{color:var(--mut)}.big{font:700 44px 'Fraunces',Georgia,serif;color:var(--gold)}
+.bar{height:8px;background:var(--lil);border-radius:9px;overflow:hidden;margin:8px 0 14px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#f3d27a);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:9px 6px;font-weight:400;margin:0;cursor:pointer;border-radius:10px;transition:background .25s}.ck:hover{background:var(--lil)}.ck.pop{animation:pop .4s}
+.ck input{width:22px;height:22px;margin-top:2px;accent-color:var(--gold);flex:none}
+.rp,.pt{position:fixed;pointer-events:none;z-index:99;border-radius:50%}.rp{width:70px;height:70px;margin:-35px;border:2px solid var(--gold)}.pt{width:7px;height:7px;margin:-3px;background:var(--gold)}
+.note{color:var(--mut);font-size:13px;margin-top:36px;text-align:center}
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;margin-top:24px;perspective:900px}
+.pc{border:1px solid var(--line);border-radius:16px;padding:14px;background:linear-gradient(160deg,var(--card),transparent);animation:rise .55s ease both}.pc:nth-child(2){animation-delay:.08s}.pc:nth-child(3){animation-delay:.16s}.pc:nth-child(4){animation-delay:.24s}.pc:nth-child(5){animation-delay:.32s}
+.pc h3{font-size:19px;margin:12px 0 4px}.pc p{color:var(--mut);font-size:14px;margin:0}
+.cov{aspect-ratio:3/4;border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:0 14px 30px -14px #000;transition:transform .5s cubic-bezier(.2,.8,.2,1)}.pc:hover .cov{transform:rotateY(-12deg) translateY(-4px)}
+.cov b{font:700 22px/1.1 'Fraunces',Georgia,serif}.cov small{opacity:.85;font-size:12px}
+.how{margin:8px 0 14px;border:1px dashed var(--gold);border-radius:12px}.how summary{font:600 16px 'DM Sans',sans-serif;padding:12px 14px;color:var(--gold)}.how ol{margin:0 14px 12px 38px;padding:0}.how li{margin:8px 0}.tip{margin:0 14px 14px;padding:10px 12px;background:var(--lil);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:14px}
+</style></head><body><div class="wrap">
+<header class="hero"><div class="brand">Digitera Levi · Build. Share. Earn.</div>
+<h1>The Kita Blueprint</h1>
+<p>Stop guessing what to sell. This is the exact system: what to offer, what to charge, what to say, and what to do today. Follow it for 7 days and you'll have a live offer, early proof, and real conversations with paying customers.</p>
+<button class="btn" id="st">Start here</button></header>
+<nav role="tablist" id="nav"></nav>
+
+<section class="panel" id="p7"><h2>Make the decision. Then make the first move.</h2><p class="sub">Talent isn't what separates people who earn from people who don't. Decisions and daily action are. Lock in your commitment below, then show up every day, even for just 20 minutes.</p>
+<div class="row"><div><label for="nm">Your name</label><input id="nm"></div><div><label for="gl">Monthly income goal (₱)</label><input id="gl" type="number" min="1" value="20000"></div></div>
+<label for="tr">When... (your trigger)</label><input id="tr" placeholder="e.g. I finish breakfast">
+<label for="ac">I will... (your action)</label><input id="ac" placeholder="e.g. message 10 potential clients">
+<button class="btn" id="go7">Lock in my commitment</button><div id="o7"></div></section>
+
+<section class="panel" id="p0"><h2>The 8 Principles</h2><p class="sub">This is what separates people who earn from people who just stay busy. Read one, then do the "Do this now" step before you move on.</p><div id="pb0"></div></section>
+
+<section class="panel" id="p8"><h2>Why People Buy</h2><p class="sub">Eight psychology principles top marketers use, turned into exact scripts. One rule: everything stays true. No fake testimonials, no fake scarcity. Trust is your most expensive asset.</p><div id="pb8"></div></section>
+
+<section class="panel" id="p1"><h2>Find your fastest route</h2><p class="sub">Pick your strongest skill. Get the most direct path to your first paid client.</p>
+<div class="row"><div><label for="sk">My strongest skill</label><select id="sk"><option value="design">Design (Canva, layouts)</option><option value="write">Writing and storytelling</option><option value="admin">Organizing and admin</option><option value="sell">Talking to people and selling</option><option value="none">I'm just starting</option></select></div>
+<div><label for="hr">Hours per day</label><select id="hr"><option value="1">1–2 hours</option><option value="3" selected>3–4 hours</option><option value="5">5+ hours</option></select></div></div>
+<button class="btn" id="go1">Show my route</button><div id="o1"></div></section>
+
+<section class="panel" id="p2"><h2>Offer Score</h2><p class="sub">Before you market anything, test your offer. Be honest with the sliders. Your weakest link decides your results.</p>
+<div id="sl"></div><div class="out"><div class="gauge"><div class="gwrap"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="ring" cx="60" cy="60" r="52"/></svg><div class="gnum" id="sc">0</div></div><div style="flex:1;min-width:220px"><h3 id="vd"></h3><p id="tp"></p></div></div></div></section>
+
+<section class="panel" id="p3"><h2>Offer Studio</h2><p class="sub">Tell it what you sell. It builds your headline, a direct-response post, your price reply, and three price tiers.</p>
+<label for="w">What do you sell?</label><input id="w" placeholder="e.g. Facebook page setup for home bakers">
+<label for="t">Who is it for?</label><input id="t" placeholder="e.g. home bakers just starting out">
+<label for="r">What result do they get?</label><input id="r" placeholder="e.g. more orders from a page that looks trustworthy">
+<label for="pc">Core price (₱)</label><input id="pc" type="number" min="1" value="1500">
+<button class="btn" id="go3">Build my offer</button><div id="o3"></div></section>
+
+<section class="panel" id="p4"><h2>Script &amp; Prompt Vault</h2><p class="sub">The exact words for every stage of the sale. Copy, replace the [brackets], send.</p>
+<div class="chips" id="chips"></div><div id="pl"></div></section>
+
+<section class="panel" id="p5"><h2>Goal Math</h2><p class="sub">Remove the guesswork. See how many people you need to talk to.</p>
+<div class="row"><div><label for="g">Monthly income goal (₱)</label><input id="g" type="number" min="1" value="20000"></div>
+<div><label for="pp">Price per sale (₱)</label><input id="pp" type="number" min="1" value="1500"></div>
+<div><label for="cr">Out of 100 people you message, how many buy?</label><input id="cr" type="number" min="1" max="100" value="10"></div></div>
+<div class="stats"><div><small>Sales per month</small><div class="big" id="s1">0</div></div><div><small>People to talk to</small><div class="big" id="s2">0</div></div><div><small>Conversations per day</small><div class="big" id="s3">0</div></div><div><small>Income per week</small><div class="big" id="s4" style="font-size:32px">0</div></div></div></section>
+
+<section class="panel" id="p6"><h2>7-Day Launch Plan</h2><p class="sub">One week, one day at a time. Under each day, tap "Show me how" for super simple steps and premium tips. If you can read it, you can do it. Your progress saves on this device.</p><div id="pg"></div><div class="bar"><i id="pbar"></i></div><div id="cl"></div></section>
+
+<section class="panel" id="p9"><h2>Free PLR Vault: 5 Products You Can Sell</h2><p class="sub">A complete starter library you can rebrand as your own. Add your name and brand once and all 5 products are generated instantly, each with its own cover. Edit, set your price, and launch this week.</p>
+<div class="row"><div><label for="bn">Your brand name</label><input id="bn" placeholder="e.g. Maria's Digital Studio"></div><div><label for="an">Your name (author)</label><input id="an" placeholder="e.g. Maria Santos"></div></div>
+<button class="btn" id="go9">Generate my PLR library</button><div id="o9"></div>
+<details style="margin-top:28px"><summary>PLR license: what you can and can't do</summary><p>This license applies to all 5 products in the vault.</p><p><b>You can:</b> rename them, edit it, add your own content, put your name and brand on it, and sell it to your customers as your own product.</p><p><b>You can't:</b> resell or give away the PLR rights, share the original unedited file, or claim this kit as a PLR product you're distributing to other sellers.</p></details></section>
+<p class="note">All numbers and examples are guidance, not a guarantee of income. Results depend on your action. © Digitera Levi</p></div>
+<script>
+const $=id=>document.getElementById(id),esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;'),peso=n=>'₱'+Math.round(n).toLocaleString('en-US'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function fx(c,x,y,n){if(RM)return;for(let i=0;i<n;i++){const e=document.createElement('i');e.className=c;e.style.left=x+'px';e.style.top=y+'px';document.body.appendChild(e);const a=Math.random()*6.28,d=30+Math.random()*55;e.animate(c=='pt'?[{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px) scale(0)`,opacity:0}]:[{transform:'scale(.2)',opacity:.8},{transform:'scale(1)',opacity:0}],{duration:c=='pt'?700:550,easing:'ease-out'}).onfinish=()=>e.remove()}}
+document.addEventListener('click',e=>fx('rp',e.clientX,e.clientY,1));
+const win=el=>{const r=el.getBoundingClientRect();fx('pt',r.left+r.width/2,r.top+r.height/2,12)};
+function cu(el,to,f){f=f||(n=>Math.round(n));const from=el._v||0;el._v=to;if(RM){el.textContent=f(to);return}const t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/650),e=1-Math.pow(1-p,3);el.textContent=f(from+(to-from)*e);if(p<1)requestAnimationFrame(s)})(t0)}
+const tabs=[['Start Here',7],['PLR Vault',9],['Principles',0],['Psychology',8],['Route',1],['Offer Score',2],['Offer Studio',3],['Vault',4],['Goal Math',5],['7-Day Plan',6]];
+tabs.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('role','tab');b.onclick=()=>show(i);$('nav').appendChild(b)});
+function show(i){tabs.forEach((t,k)=>{$('p'+t[1]).classList.toggle('on',k===i);$('nav').children[k].setAttribute('aria-selected',k===i)});$('nav').children[i].scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});if(tabs[i][1]==2)score()}show(0);
+$('st').onclick=()=>{show(0);$('nav').scrollIntoView({behavior:'smooth'})};
+function cp(t,b){const o=b.textContent,ok=()=>{b.textContent='Copied ✓';win(b);setTimeout(()=>b.textContent=o,1500)};navigator.clipboard.writeText(t).then(ok).catch(()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()})}
+const R=[['You get paid for results, not hours','Nobody pays for "2 hours of design." They pay for more orders, a cleaner brand, and less stress. Sell the outcome and you stop competing with the cheapest freelancer.','Finish this sentence: "I help ___ get ___ in ___ days."'],
+['Hunt for pain that has a budget','A business already making sales will pay ₱3,000 faster than someone with zero sales. Look for sellers with products and customers but a messy page, slow replies, or no system.','List 10 businesses you know with products but weak presentation.'],
+['Small niche, big price','"I\'m a designer" competes with thousands. "I fix Facebook pages for home bakers" makes you the obvious pick. Specialists get chosen, not haggled.','Pick 1 business type and 1 problem. Market only that for the next 7 days.'],
+['Proof before polish','Three real testimonials beat thirty pretty samples. Buyers aren\'t asking "is it nice?" They\'re asking "can I trust you?"','Offer 2 free projects in exchange for honest feedback you can post.'],
+['The money is in the follow-up','Most buyers won\'t say yes to message #1. They\'re busy, not uninterested. A polite follow-up on Day 2 and Day 5 separates people who earn from people who quit.','Add a "Next follow-up" column to your tracker and open it every day.'],
+['Price in three tiers','One price forces a yes-or-no. Three prices change the question to "which one?" The middle option sells most, and the top one makes it feel reasonable.','Build your three tiers in Offer Studio.'],
+['Monthly beats one-time','Five clients at ₱3,000 a month are steadier than thirty one-offs at ₱500. Sell ongoing support: posts, updates, chat replies.','Pick the part of your service clients need every month.'],
+['Systemize, then reinvest','Repeat a task 3 times? Turn it into a template. And put 10% of every peso into tools, ads, or learning. That\'s how small income compounds.','Open a separate GCash or bank pocket for that 10%.']];
+$('pb0').innerHTML=R.map(r=>`<details><summary>${r[0]}</summary><p>${r[1]}</p><div class="do"><b>Do this now:</b> ${r[2]}</div></details>`).join('');
+const P={design:['Freelance Design and Page Setup','Sellers need clean logos, post templates, and page layouts but have no time to make them.','₱500–₱3,000 per project','Make 3 samples for one niche and keep them in one folder.|Post one sample a day and say you\'re taking clients.|Message 10 small sellers daily and offer a free mini-makeover of one post.'],
+write:['Content Writing for Small Businesses','Owners struggle to think of posts every week. You handle it.','₱1,500–₱6,000 per month per client','Pick 1 niche and write 10 sample posts.|Package it: 12 posts a month at a flat price.|Offer 3 free posts to 5 businesses in exchange for a testimonial.'],
+admin:['Virtual Assistant for Online Sellers','They need someone to answer chats, track orders, and update listings.','₱8,000–₱20,000 per month, part-time','List 5 tasks you can do well.|Build your one-page offer in Offer Studio.|Pitch 10 sellers a day with a 3-day trial.'],
+sell:['Digital Product Reselling','No stock, no shipping. You sell templates and tools you have reseller rights to.','₱300–₱1,500 per sale','Pick 1 product with a clear result.|Write 5 posts showing the problem and the fix.|Send your link to 20 prospects a day by personal message.'],
+none:['Starter: Simple Service First','You learn faster with a real client. Start small: fix a page or handle customer chats.','₱300–₱1,000 on your first projects','Pick 1 service and learn it from free YouTube tutorials in 3 days.|Do it free for 2 people you know and ask for a testimonial.|Launch your paid offer and raise the price after 3 clients.']};
+$('go1').onclick=()=>{const p=P[$('sk').value],h=+$('hr').value,pl=h==1?'At 1–2 hours a day: aim for just 10 messages. No extras.':h==3?'At 3–4 hours: 1 hour to create, 2 hours to reach out.':'At 5+ hours: you can handle 2–3 clients at once in month one.';
+$('o1').innerHTML=`<div class="out"><h3>${p[0]}</h3><p>${p[1]}</p><p><b>Realistic target:</b> ${p[2]}</p><ol>${p[3].split('|').map(x=>`<li>${x}</li>`).join('')}</ol><p>${pl}</p></div>`;win($('go1'))};
+const M=[['Size of the result','How big is the change your buyer gets?','Raise the promise: what is the biggest change you can deliver?'],['Trust and proof','How much proof do you have?','Add proof: before/after samples, or free trials for 2 people.'],['Speed to result','How fast do they see the first result?','Shorten the wait: deliver a first result within 7 days.'],['Ease for the buyer','How little do they have to do?','Reduce their effort: they send details, you do everything else.']];
+$('sl').innerHTML=M.map((m,i)=>`<label for="m${i}">${m[0]}: <span id="v${i}">5</span>/10</label><small style="color:var(--mut)">${m[1]}</small><input type="range" id="m${i}" min="1" max="10" value="5">`).join('');
+function score(){const v=M.map((_,i)=>+$('m'+i).value);v.forEach((x,i)=>$('v'+i).textContent=x);const s=Math.round(Math.pow(v.reduce((a,b)=>a*b,1),.25)*10),w=v.indexOf(Math.min(...v));
+cu($('sc'),s);$('ring').style.strokeDashoffset=326.7*(1-s/100);$('vd').textContent=s<40?'Needs work':s<65?'Ready to sell':s<85?'Strong offer':'Premium-level offer';$('tp').textContent='Weakest link: '+M[w][0]+'. '+M[w][2]}
+M.forEach((_,i)=>$('m'+i).oninput=score);score();
+$('go3').onclick=()=>{const w=$('w').value.trim()||'[your service]',t=$('t').value.trim()||'[your target customer]',r=$('r').value.trim()||'[the result]',c=+$('pc').value||0;
+const it=[['Direct-response post',`For ${t}.\n\nYou know the feeling: you work hard, but you still don't ${r}. Every day it stays that way, a customer scrolls past and buys from someone else.\n\nThat's why I built ${w}. The goal: ${r}.\n\nLaunch price this month: ${peso(c)}. Slots are limited because I do every project myself.\n\nComment "START" and I'll send the next step.`],['Headline',`${w} for ${t}: ${r}.`],['Reply to "That\'s expensive"',`I understand. The ${peso(c)} is for ${r}, not just the hours. If one or two new customers come in because of it, it has already paid for itself. Want to start with the Starter option at ${peso(c*.6)} first?`]];
+$('o3').innerHTML=`<div class="tiers"><div><small>Starter</small><b>${peso(c*.6)}</b>One core deliverable, no revisions.</div><div class="mid"><small>Core, your best seller</small><b>${peso(c)}</b>The full service with 2 revisions.</div><div><small>VIP</small><b>${peso(c*2.5)}</b>Full service, priority delivery, 30 days of support.</div></div>`+it.map((x,i)=>`<div class="box"><b>${x[0]}</b>\n${esc(x[1])}<br><button class="btn alt" data-i="${i}">Copy</button></div>`).join('');
+$('o3').querySelectorAll('button').forEach(b=>b.onclick=()=>cp(it[b.dataset.i][1],b));win($('go3'))};
+const V=[['Script','First message','Hi [name]! I noticed [business] and I have an idea to help you [result]. I fix [service] for [niche] owners. Can I show you a quick example? It\'s free to look.'],['Script','Follow-up, Day 2','Hi [name], just circling back. I made a small sample for [business]. Want me to send it over?'],['Script','Follow-up, Day 5 (last)','Hi [name], last message from me so I don\'t spam you. If you want [service], I have 2 slots open this week. Thanks either way!'],['Script','"That\'s expensive"','Totally fair. The [price] is for [result], not just my time. If a Starter option at [lower price] fits your budget better, want to see it?'],['Script','"Let me think about it"','No problem. So you can decide with confidence, what\'s the one question you still need answered? I might be able to help right now.'],['Script','Closing the sale','Here\'s how we start: 1) pay [price] via GCash [number], 2) send me [details], 3) you get the first draft in [days] days. Ready to begin?'],['Script','Upsell after the first project','Thanks for trusting me! Since you loved the result, I offer monthly [service] for [price] so the results keep coming. Want me to add you for next month?'],['Script','Ask for a testimonial and referral','Glad you liked it! Could you share one sentence of feedback? And do you know another business owner who needs this? I\'ll give them a special rate.'],['Script','"No reviews yet?"','Fair question. I\'m new, and I won\'t invent reviews. Here\'s my offer: launch price of [price], 1 free revision, and if you\'re not happy with the first draft, you don\'t have to continue. I\'d rather let my work prove itself.'],['Script','Launch announcement post','I\'m now taking [service] clients for [niche]. I\'m new, so launch price: [price] for my first 5 clients. I\'ll show every step of the process, nothing hidden. Comment "START" to be one of the first 5.'],['AI Prompt','Find service ideas','Give me 20 problems [target customer] has that I can solve with [skill], turned into sellable services with realistic Philippine prices.'],['AI Prompt','30-day content calendar','Create a 30-day content calendar for [business] selling [product] to [target]. Mix tips, stories, proof, and offers.'],['AI Prompt','Sales page copy','Write a sales page for [product]: problem, solution, 5 benefits, FAQ, and price [price]. Warm, direct tone.'],['AI Prompt','Order tracker','Build a Google Sheets tracker for orders, payments, delivery, and next follow-up for an online seller. List the columns and formulas.']];
+let cat='Script';function dV(){$('chips').innerHTML='';['Script','AI Prompt'].forEach(c=>{const b=document.createElement('button');b.textContent=c=='Script'?'Scripts':'AI Prompts';b.className=c==cat?'on':'';b.onclick=()=>{cat=c;dV()};$('chips').appendChild(b)});
+$('pl').innerHTML='';V.filter(v=>v[0]==cat).forEach(v=>{const d=document.createElement('div');d.className='pr';d.innerHTML=`<b>${v[1]}</b><p>${esc(v[2])}</p>`;const b=document.createElement('button');b.className='btn alt';b.textContent='Copy';b.onclick=()=>cp(v[2],b);d.appendChild(b);$('pl').appendChild(d)})}dV();
+function calc(){const g=+$('g').value||0,p=+$('pp').value||1,c=Math.min(100,Math.max(1,+$('cr').value||1)),n=Math.ceil(g/p),l=Math.ceil(n/(c/100));cu($('s1'),n);cu($('s2'),l);cu($('s3'),Math.ceil(l/30));cu($('s4'),g/4.3,peso)}
+['g','pp','cr'].forEach(i=>$(i).oninput=calc);calc();
+const W=[['Day 1: Decide',['Pick 1 niche and 1 problem to solve','Write: "I help ___ get ___ in ___ days."','Build your offer and 3 price tiers in Offer Studio']],['Day 2: Prepare',['Make 3 samples you can show','Set up your payment details (GCash or bank)','Clean up your Facebook profile']],['Day 3: Go public',['Post your launch announcement (copy it from the Vault)','Message 10 prospects','Log every reply in your tracker']],['Day 4: Follow up',['Follow up with everyone who saw or replied','Message 10 more prospects','Offer a free mini-sample to 3 people']],['Day 5: Get your first yes',['Close your first client at launch price','Start delivering right away','Post a progress update']],['Day 6: Deliver and collect proof',['Deliver beyond expectations','Ask for a testimonial and screenshot','Send your final follow-up (Day 5 script)']],['Day 7: Review and scale',['Put your numbers in Goal Math','Ask each client for 2 referrals','Set aside 10% of income and plan your next 7 days']]];
+const op=new Set(),G=[
+[["Think of 3 people you know who sell things online, like someone who sells cakes, clothes, or snacks.","Ask each one: \"What is the hardest part of selling?\" Maybe their page looks messy, they reply slowly, or their photos are dark.","Pick ONE hard thing you can help with. This is your problem.","Fill in this sentence: \"I help [who] get [result].\" Example: \"I help cake sellers get more orders with a clean Facebook page.\"","Open the Offer Studio tab, type it in, and tap Build my offer. Copy the Direct-response post. Save it, you'll post it on Day 3."],["Be specific. Premium brands say one clear thing. \"We do everything\" sounds cheap.","Ask an AI chat assistant: \"Give me 10 problems [who] have.\" Then pick the one you truly understand."]],
+[["Open Canva (it's free). Make 3 samples that show what you do, like 3 posts, 3 logos, or 3 sample replies.","Use the same 2 colors and the same font on all 3 so they look like a matching set.","Save them in one folder named after your brand.","Check your payment details. Make sure your GCash name and number are right, and take a screenshot you can send.","Fix your Facebook profile: a clear photo, a one-line bio like \"I help [who] get [result],\" and a message button."],["Matching colors and fonts look expensive. Messy styles look cheap.","If you use AI to write your sample text, read it out loud and fix anything that doesn't sound like you. People can feel when it's real."]],
+[["Open the Vault tab and copy \"Launch announcement post.\"","Replace every [bracket] with your own words, then post it on Facebook.","Make a list of 10 people who might need your help: friends of friends, small sellers, people in groups you're in.","Copy the \"First message\" script and send it to each one. Change the name every time.","Write each name and their answer in a notebook or a Google Sheet."],["Record a 15-second video saying hello and what you do. People trust faces and voices.","Reply fast. Answering within minutes feels premium.","Never send the same copy-paste to everyone. A personal message beats a hundred blasts."]],
+[["Look at your list. Who saw your message but didn't answer?","Copy \"Follow-up, Day 2\" from the Vault and send it nicely.","Send the First message to 10 new people.","Pick 3 people who seem interested and offer a free mini-sample. Keep it small, like 1 post or 1 logo idea.","Write every answer in your sheet."],["Be kind, not pushy. No reply usually means busy, not no.","Send a short voice note: \"Hi, I made this just for you.\" A personal touch stands out in a world full of bots.","Send samples as a screenshot so they can see it right away on their phone."]],
+[["When someone asks \"How much?\", send your 3 prices (Starter, Core, VIP) from Offer Studio.","If they say it's expensive, use the \"That's expensive\" script and offer the Starter.","When they say yes, copy \"Closing the sale\" and send your payment details.","After they pay, say thank you and ask for the details you need.","Post a progress update like \"Day 5: working on my first client!\" Don't share private details without permission."],["Start the work within an hour of payment. Speed feels premium.","Tell them what happens next in 3 simple steps so they feel safe.","Always say thank you. Kindness is memorable."]],
+[["Do the work slowly and carefully. Check spelling, colors, and links. Show it to a friend first if you can.","Put it in one neat Google Drive folder with a clear name, like \"Maria Cake Page Kit - Final.\"","Record a 1-minute screen video explaining what you made. Your phone's screen recorder is enough.","Ask: \"Can you share one sentence about your experience? A screenshot is fine!\" Ask permission to post it.","Send the \"Follow-up, Day 5\" message to people who never replied."],["Under-promise, then over-deliver. Add one small bonus, like an extra caption.","Use AI to double-check spelling, but you make the final call.","A thank-you voice note after delivery turns buyers into fans."]],
+[["Count: how many messages did you send? How many replied? How many said yes?","Open the Goal Math tab and type in your numbers to see what to do next.","Use the \"Ask for a testimonial and referral\" script to get 2 names from each client.","Move 10% of what you earned into your grow fund (a separate GCash or bank pocket).","Pick your goal for next week: more messages, a better offer, or a monthly plan for your first client."],["Keep a win list: every yes and every reply. Seeing wins builds confidence.","Turn your best sample into a case study post: the problem, what you did, the result.","Save your best replies as templates so next week is faster."]]];
+let st={};try{st=JSON.parse(localStorage.getItem('kb')||'{}')}catch(e){}let lk='';
+function dC(){let tot=0,dn=0,h='';W.forEach((w,i)=>{h+=`<h3 style="margin:20px 0 4px;font-size:21px">${w[0]}</h3>`;w[1].forEach((t,j)=>{const k=i+'-'+j;tot++;if(st[k])dn++;h+=`<label class="ck${k==lk?' pop':''}"><input type="checkbox" data-k="${k}" ${st[k]?'checked':''}>${t}</label>`});const g=G[i];h+=`<details class="how" data-d="${i}" ${op.has(i)?'open':''}><summary>Show me how, step by step</summary><ol>${g[0].map(x=>`<li>${x}</li>`).join('')}</ol>${g[1].map(x=>`<div class="tip"><b>Premium tip:</b> ${x}</div>`).join('')}</details>`});
+$('cl').innerHTML=h;$('cl').querySelectorAll('.how').forEach(d=>d.ontoggle=()=>{d.open?op.add(+d.dataset.d):op.delete(+d.dataset.d)});const pc=dn/tot*100;$('pg').innerHTML=`<b>${dn} of ${tot} done</b><p style="color:var(--gold);margin:4px 0 0">${pc==0?'One check is all it takes to start the momentum.':pc<25?'You started. That already puts you ahead of everyone who only plans.':pc<50?'You\'re moving. Don\'t kill the momentum.':pc<100?'Past halfway. Very few people get this far.':'7 days done. You have a system now. Repeat the week and scale it.'}</p>`;$('pbar').style.width=pc+'%';
+$('cl').querySelectorAll('input').forEach(c=>c.onchange=()=>{st[c.dataset.k]=c.checked;lk=c.dataset.k;if(c.checked)win(c);try{localStorage.setItem('kb',JSON.stringify(st))}catch(e){}dC()})}dC();
+const K='kbm';let me={};try{me=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+const mid=()=>{const d=new Date();d.setHours(0,0,0,0);return d.getTime()},sv=()=>{try{localStorage.setItem(K,JSON.stringify(me))}catch(e){}};
+const MS=['Write down 10 businesses you could help.','Make 1 sample and post it.','Send 10 messages with the First message script.','Follow up with everyone who didn\'t reply (Day 2 script).','Post a behind-the-scenes of your work.','Offer a free mini-sample to 5 people.','Review: how many messages, replies, and yeses? Put the numbers in Goal Math.'];
+function d7(){if(!me.start)return;const day=Math.round((mid()-me.start)/864e5)+1,done=me.last===mid();
+$('nm').value=me.n||'';$('gl').value=me.g||20000;$('tr').value=me.t||'';$('ac').value=me.a||'';
+$('o7').innerHTML=`<div class="out"><h3>${esc(me.n||'Your')} commitment</h3><p>In the next 7 days, I will launch my offer and start real conversations. My goal is ${peso(me.g)} a month. When ${esc(me.t||'[trigger]')}, I will ${esc(me.a||'[action]')}. I don't wait to feel ready. I start, and readiness follows.</p><p><b>Day ${day} · Streak: ${me.streak||0} days</b></p><p><b>Today's mission:</b> ${MS[(day-1)%7]}</p><button class="btn" id="ci" ${done?'disabled style="opacity:.5"':''}>${done?'Checked in today. Nice work!':'I finished today\'s mission'}</button></div>`;
+if(!done)$('ci').onclick=()=>{win($('ci'));me.streak=me.last===mid()-864e5?(me.streak||0)+1:1;me.last=mid();sv();setTimeout(d7,500)}}
+$('go7').onclick=()=>{me.n=$('nm').value.trim();me.g=+$('gl').value||20000;me.t=$('tr').value.trim();me.a=$('ac').value.trim();if(!me.start)me.start=mid();sv();d7();win($('go7'))};d7();
+const PS=[['No testimonials? You still need proof','You don\'t need reviews to be trusted. You need evidence you\'re real and serious. A beginner who is open about it beats a fake review. Make 3 samples, post your process daily ("Day 1 of 7"), and show before/after of your own work.','I\'m new, so I show every step. Day 1: here\'s what I made today. Want to see the full process for your business? Just message me.'],
+['Reciprocity: give first','When someone gets value, they naturally want to return it. This isn\'t a trick, it\'s showing your work. Keep it small: one mini-sample, not a full project.','I made a small sample for [business], free. Want me to send it over?'],
+['Micro-yes: small yeses before the big one','People agree more easily in small steps. "Want to see a sample?" Yes. "Want to continue?" The second yes is easier. Never ask for payment in your first message.','Can I show you one idea for your page? Just a yes is all I need.'],
+['Loss aversion: show what\'s being lost','Losing hurts more than gaining feels good. But only use what\'s real: what is this person actually losing today? Don\'t scare, hold up a mirror.','Every week your page stays messy, visitors look and don\'t trust it. Let\'s fix that so they stop going to someone else.'],
+['Anchoring: show the high price first','The first number people see becomes their yardstick. List VIP before Core and Core suddenly looks reasonable.','VIP: [high price] with priority and support. Core: [price], the most popular. Starter: [lower price] for a first step.'],
+['Specificity and risk reversal','"Affordable" isn\'t believable. "₱1,500, done in 3 days, 5 designs, 1 free revision" is. Then remove the fear: if they don\'t like the first draft, they don\'t have to continue.','₱[price], [number] deliverables, done in [days] days. If you\'re not happy with the first draft, you don\'t have to continue.'],
+['Scarcity: only if it\'s true','Scarcity works when it\'s real. You work alone, so slots really are limited. State the real number and the real reason, and honor it.','I\'m a one-person team, so I only take 3 projects this week. Two are already taken. Want the last one?'],
+['Identity: speak to who they want to be','People act in line with who they believe they are. A serious seller doesn\'t neglect how their page looks. Same for you: tell yourself daily, "I\'m someone who shows up every day."','This is for sellers who take their business seriously and want to look professional. Is that you?']];
+$('pb8').innerHTML=PS.map((r,i)=>`<details><summary>${r[0]}</summary><p>${r[1]}</p><div class="do"><b>Script:</b> ${esc(r[2])}<br><button class="btn alt" data-i="${i}">Copy</button></div></details>`).join('');
+$('pb8').querySelectorAll('button').forEach(b=>b.onclick=()=>cp(PS[b.dataset.i][2],b));
+
+const PLR=(b,a)=>`${b.toUpperCase()}
+7 Days to Your First Digital Product
+A simple, no-fluff guide by ${a}
+
+WELCOME
+Most people never launch because they wait to feel ready. This guide removes the guessing. In 7 days you'll go from "I have no idea what to sell" to a real product you can show, price, and sell to real people. Spend 30 to 60 minutes a day. Do each day's task before you read the next one.
+
+DAY 1: PICK A PROBLEM WORTH SOLVING
+Don't start with "what product should I make?" Start with "who is struggling with what?" The best beginner products solve one specific problem for one specific group.
+Formula: "I help [who] get [result] without [pain]."
+Examples: "I help home bakers get more orders without hiring a designer." "I help new freelancers send professional proposals without starting from scratch."
+Your task: Write 3 versions of the formula. Pick the one where you personally know someone with this problem.
+
+DAY 2: CHOOSE THE SIMPLEST FORMAT
+You don't need a course or an app. Beginners sell best with simple formats people use immediately:
+- Templates (Canva, Google Docs, Sheets)
+- Checklists and planners
+- Mini-guides (10 to 20 pages)
+- Prompt packs and swipe files
+Rule: choose the format that gets your buyer the result fastest, not the one that looks most impressive.
+Your task: Pick one format and write one sentence: "This product helps [who] [result] in [time]."
+
+DAY 3: BUILD THE SMALLEST USEFUL VERSION
+Done beats perfect. Your first version only needs to deliver one clear result.
+Outline to follow: 1) The problem in one page. 2) The steps, simple and numbered. 3) Real examples. 4) A checklist they can finish. 5) The next step they should take.
+Use Canva or Google Docs. Keep the design clean: one font pair, two colors, plenty of white space.
+Your task: Finish a first draft today, even if it's rough.
+
+DAY 4: PACKAGE IT SO IT SELLS
+People buy the result, not the file. Name your product after the outcome.
+Weak: "Social Media Templates." Strong: "30 Ready-to-Post Templates That Fill Your Page With Customers."
+Add: a clean cover, a 1-page preview, and a short promise.
+Starter pricing: P99 to P499 for a simple template pack. P500 to P1,500 for a guide with a clear step-by-step result. You can raise your price after your first buyers.
+Your task: Write your product name, your promise, and your price.
+
+DAY 5: SET UP DELIVERY AND PAYMENT
+Keep it simple. Upload your file to Google Drive and set the link so viewers can only view or make a copy. Choose how you'll collect payment (GCash or bank transfer works for most buyers). Prepare a confirmation message you can paste:
+"Thank you for your order! Here's your link: [link]. Message me if you need any help getting started."
+Your task: Test it yourself with a friend's phone, from payment to opening the file.
+
+DAY 6: LAUNCH TO 20 PEOPLE
+You don't need thousands of followers. You need 20 real conversations.
+Post once on your page, then send a personal message to 20 people who fit your audience.
+DM script: "Hi [name]! I just made [product] to help [who] [result]. Launch price is P[price] for the first 10 buyers. Want me to send you a preview?"
+Follow up politely on Day 2 and Day 5. Most sales come from the follow-up.
+Your task: Send 20 messages and post once.
+
+DAY 7: COLLECT PROOF AND IMPROVE
+Every buyer is now an asset. Ask each one: "What was the most useful part? What would you improve?" Save their answers (with permission) as testimonials. Fix any confusion they mention and release version 2.
+Then ask: "What else are you struggling with?" Their answer is your next product.
+Your task: Ask your first 3 buyers for feedback and write down what to improve.
+
+10 READY-TO-POST CAPTIONS
+1. Struggling with [problem]? I made [product] so you can [result]. Comment "INFO" and I'll send it.
+2. 3 mistakes [audience] make with [topic]. Number 2 costs the most.
+3. Before: [messy situation]. After: [clean result]. Here's the exact template I used.
+4. Quick tip for [audience]: [one useful tip]. Want the full guide? Message me.
+5. I'm new at this, so I'm launching [product] at a special price for my first 10 buyers.
+6. Day [number] of building [product]. Here's what I learned today: [lesson].
+7. If you're [audience], save this checklist: [3 short points].
+8. Myth: [common myth]. Truth: [simple truth]. Want more? Link in comments.
+9. Someone asked me [question]. Here's my honest answer: [answer].
+10. Last slots at launch price. After [date], it goes up to P[price]. Message "START" to claim yours.
+
+YOUR NEXT STEPS
+Collect feedback, improve version 2, and create a second product from the questions your buyers ask. One small product becomes a library, and a library becomes real income.
+
+(c) ${b}. Created by ${a}. All rights reserved.`;
+
+const CAP=(b,a)=>`${b.toUpperCase()}
+30-Day Content Caption Pack
+By ${a}
+
+HOW TO USE: Post one caption a day. Replace every [bracket] with your own details. Pair each with a photo, a Canva graphic, or a short video, and end every post with a clear next step.
+
+WEEK 1: ATTRACT (get noticed)
+1. Be honest: what's the #1 thing [audience] struggle with right now? Drop it below. I'm building something for it.
+2. If you're a [audience] and [problem] keeps happening, you're not alone. Here's why it happens: [reason].
+3. 3 signs you need [solution]: 1) [sign] 2) [sign] 3) [sign]. Which one hits home?
+4. Stop doing [common mistake]. Do this instead: [better way].
+5. One small change that improved [result] for me: [change]. Try it today.
+6. POV: you finally [dream outcome]. Here's the first step to get there: [step].
+7. Save this for later: [short checklist of 3 items].
+
+WEEK 2: EDUCATE (build trust)
+8. How to [result] in 3 steps: 1) [step] 2) [step] 3) [step].
+9. The free tool I use every day to [task]: [tool]. Here's how.
+10. Myth: [myth]. Truth: [truth].
+11. Beginner mistake I made: [mistake]. What I'd do now: [fix].
+12. A 5-minute habit that helps [audience] [result]: [habit].
+13. Quick tutorial: how to [task] using [tool]. Comment "GUIDE" if you want the full version.
+14. Someone asked, "[question]". Here's my honest answer: [answer].
+
+WEEK 3: CONNECT AND PROVE (be real)
+15. Why I started [brand]: [3 honest sentences].
+16. Behind the scenes: here's how I make [product or service]. [photo or video of the process]
+17. Before and after: [before] to [after]. Here's what changed: [change].
+18. A real message I got today: "[customer message]". Thank you, this is why I do this. (Only post real messages, with permission.)
+19. I'm still learning too. This week's lesson: [lesson].
+20. What I'd tell myself on day 1 of [journey]: [advice].
+21. Meet the person behind [brand]: [3 facts, 1 of them fun].
+
+WEEK 4: SELL (make the offer)
+22. Introducing [product]: it helps [who] [result] without [pain]. Launch price: ₱[price].
+23. What's inside [product]: [item 1], [item 2], [item 3]. Message "INFO" to get it.
+24. This is for you if: [trait], [trait], [trait]. Not for you if: [trait].
+25. Questions about [product]? Top 3 answered: [Q1], [Q2], [Q3].
+26. Still thinking about it? If you wait: [honest consequence]. If you start today: [benefit].
+27. Founding price ends [date]. After that it goes up to ₱[price]. Message "START".
+28. Real talk: "[objection]". Here's how I see it: [answer].
+29. Last call: [number] slots left at launch price. Message "START" to claim one.
+30. Thank you for supporting [brand] this month. What's next: [plan]. Tell me what you want to see.
+
+(c) ${b}. Created by ${a}.`;
+const IDEAS=(b,a)=>`${b.toUpperCase()}
+40 Digital Product Ideas That Sell
+By ${a}
+
+Pick the idea closest to something you already know. Specific beats clever: "Order Tracker for Online Sellers" outsells "Spreadsheet Pack."
+
+FOR ONLINE SELLERS
+1. Order tracking Google Sheet  2. Product photo checklist  3. 30 product caption templates  4. Customer reply scripts pack  5. Packaging and unboxing guide  6. Pricing and profit calculator sheet  7. Seasonal promo calendar  8. Shop launch checklist
+
+FOR FREELANCERS AND VAs
+9. Client proposal templates  10. Client onboarding questionnaire  11. Simple invoice templates  12. Weekly planner for freelancers  13. Cold outreach scripts  14. Portfolio layout templates  15. Rate card templates  16. Client feedback form
+
+FOR CONTENT CREATORS
+17. Story templates  18. Reel script pack  19. Content calendar sheet  20. Hashtag research guide  21. Profile makeover guide  22. Brand kit templates  23. Highlight cover pack  24. 100 hooks swipe file
+
+FOR STUDENTS AND PARENTS
+25. Study planner printable  26. Reviewer templates  27. Chore chart and rewards  28. Weekly meal planner with grocery list  29. Family budget tracker  30. Kids activity pack  31. School project templates  32. Daily routine charts
+
+FOR LIFESTYLE AND HABITS (non-medical)
+33. Habit tracker  34. Workout log  35. Meal prep guide  36. Journal prompts pack  37. Home organization checklist  38. Self-care planner  39. Gratitude journal  40. 30-day challenge tracker
+
+VALIDATE IN 24 HOURS (before you build)
+1. Pick your top 3 ideas.
+2. Post a poll or story: "Which would help you most?"
+3. DM 10 people in your audience: "Would this help you? What would make it a must-have?"
+4. Build the idea with the most yeses.
+5. Pre-sell at a founding price before you finish. Real money is the best proof.
+
+(c) ${b}. Created by ${a}.`;
+const SALES=(b,a)=>`${b.toUpperCase()}
+Sales Page Copy Template
+By ${a}
+
+Fill every [bracket] with real, specific details. Short sentences. Talk to one person.
+
+1. HEADLINE
+[Result] for [audience] in [time], without [pain].
+
+2. SUBHEADLINE
+[Product] gives you [what they get] so you can [outcome], starting today.
+
+3. THE PROBLEM
+You're [situation]. You've tried [what they tried], but [what went wrong]. It's frustrating because [emotional cost].
+
+4. THE COST OF WAITING
+Every [week or month] this continues, you [honest loss]. That adds up.
+
+5. THE SOLUTION
+That's why I created [product]. It's a [format] that helps you [result] with [simple method].
+
+6. WHAT'S INSIDE
+- [Item 1]: [benefit]
+- [Item 2]: [benefit]
+- [Item 3]: [benefit]
+- Bonus: [bonus and its benefit]
+
+7. BENEFITS
+After using this, you'll: [benefit 1], [benefit 2], [benefit 3].
+
+8. WHO IT'S FOR (AND NOT FOR)
+For you if: [trait], [trait]. Not for you if: [trait].
+
+9. MEET THE CREATOR
+I'm ${a}. I built this because [true reason]. I'm [honest stage, e.g. just starting], so I'm showing every step instead of pretending to be perfect.
+
+10. FOUNDING PRICE
+Founding price: ₱[price] for the first [number] buyers. Then it goes up to ₱[higher price].
+
+11. RISK REVERSAL
+If [product] isn't useful after you try it, message me within [days] days and we'll sort it out.
+
+12. FAQ
+Q: Do I need experience? A: [answer]
+Q: How do I get it? A: [delivery details]
+Q: What if I get stuck? A: [support details]
+Q: Can I use it on my phone? A: [answer]
+
+13. CALL TO ACTION
+Get [product] now for ₱[price]. Message "START" on [platform] or tap [button].
+
+14. P.S.
+[Remind them of the biggest benefit and the deadline.]
+
+(c) ${b}. Created by ${a}.`;
+const DESIGN=(b,a)=>`${b.toUpperCase()}
+Cover and Brand Design Cheat Sheet
+By ${a}
+
+COLOR PALETTES (copy the hex codes into Canva)
+1. Trust and Calm: #1F3A5F navy, #4A90D9 sky, #F4F7FB mist, #F5B700 accent
+2. Warm Premium: #2A1F45 deep purple, #C9961A gold, #F6F1E7 cream, #6B4FBB lilac
+3. Fresh and Friendly: #0F766E teal, #99F6E4 mint, #FFFFFF white, #FB7185 coral
+4. Bold Energy: #111827 near-black, #FACC15 yellow, #F9FAFB white, #EF4444 red
+5. Soft Elegant: #8B5E83 plum, #F3D9E5 blush, #FFF8F3 ivory, #C7A27C sand
+
+FONT PAIRS (available in Canva or Google Fonts)
+Playfair Display + Lato | Montserrat + Open Sans | Poppins + Lora | Bebas Neue + Roboto | DM Serif Display + DM Sans
+
+COVER FORMULA
+Big title (8 words or fewer) + one-line promise + your brand name + one simple graphic. Use high contrast, keep margins around 8%, and stick to 2 fonts and 3 colors.
+
+LAYOUT RULES
+- One idea per page.
+- Left-align body text.
+- Leave about 40% white space.
+- Make headings about 3x the size of body text.
+- Use 16pt or larger body text so it reads well on phones.
+- Keep margins and spacing consistent on every page.
+
+CANVA STEPS
+1. Create a design: A4, or 1080x1350 for phone-friendly pages.
+2. Add your colors and fonts to a Brand Kit.
+3. Build one master page, then duplicate it.
+4. Add page numbers.
+5. Export as PDF (Standard).
+6. Make 3 preview images of your first pages.
+7. Open the file on your phone to check it.
+
+BEFORE YOU SELL, CHECK
+Spelling and links, text contrast, a clear file name, file size, and a test download from a fresh account. Use only your own images or properly licensed ones. Never copy other people's designs.
+
+(c) ${b}. Created by ${a}.`;
+const PRODS=[['7 Days to Your First Digital Product','E-book with 7 daily tasks and 10 captions',['#6b4fbb','#2a1f45'],PLR],['30-Day Content Caption Pack','30 ready-to-post captions in 4 weekly themes',['#c9961a','#5a3a05'],CAP],['40 Digital Product Ideas That Sell','Idea bank plus a 24-hour validation test',['#1f7a6d','#0c2f36'],IDEAS],['Sales Page Copy Template','Fill-in-the-blank, 14 sections',['#b0426b','#3a1230'],SALES],['Cover and Brand Design Cheat Sheet','Palettes, fonts, layouts, and Canva steps',['#3b5bdb','#0f1b4d'],DESIGN]];
+$('go9').onclick=()=>{const b=$('bn').value.trim()||'Your Brand',a=$('an').value.trim()||'Your Name',T=PRODS.map(p=>p[3](b,a));
+$('o9').innerHTML=`<div class="lib">${PRODS.map((p,i)=>`<div class="pc"><div class="cov" style="background:linear-gradient(150deg,${p[2][0]},${p[2][1]})"><small>${esc(b)}</small><b>${p[0]}</b><small>by ${esc(a)}</small></div><h3>${p[0]}</h3><p>${p[1]}</p><button class="btn alt" data-a="v" data-i="${i}">Preview</button> <button class="btn alt" data-a="c" data-i="${i}">Copy</button> <button class="btn alt" data-a="d" data-i="${i}">Download</button></div>`).join('')}</div><button class="btn" id="ca">Copy all 5 products</button><div id="pv"></div>`;
+$('o9').querySelectorAll('button[data-a]').forEach(x=>x.onclick=()=>{const i=+x.dataset.i,k=x.dataset.a;if(k=='v'){$('pv').innerHTML=`<div class="box"><b>${PRODS[i][0]}</b>\n${esc(T[i])}</div>`;win(x);$('pv').scrollIntoView({behavior:'smooth'})}else if(k=='c')cp(T[i],x);else{try{const u=URL.createObjectURL(new Blob([T[i]],{type:'text/plain'})),l=document.createElement('a');l.href=u;l.download=PRODS[i][0].toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.txt';l.click();win(x)}catch(e){x.textContent='Use Copy'}}});
+$('ca').onclick=e=>cp(T.join('\n\n==========\n\n'),e.target);win($('go9'))};
+</script></body></html>
