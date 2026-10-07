@@ -64,6 +64,30 @@ input[type=range]{padding:0;accent-color:var(--gold)}
 .cov{aspect-ratio:3/4;border-radius:10px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:0 14px 30px -14px #000;transition:transform .5s cubic-bezier(.2,.8,.2,1)}.pc:hover .cov{transform:rotateY(-12deg) translateY(-4px)}
 .cov b{font:700 22px/1.1 'Fraunces',Georgia,serif}.cov small{opacity:.85;font-size:12px}
 .how{margin:8px 0 14px;border:1px dashed var(--gold);border-radius:12px}.how summary{font:600 16px 'DM Sans',sans-serif;padding:12px 14px;color:var(--gold)}.how ol{margin:0 14px 12px 38px;padding:0}.how li{margin:8px 0}.tip{margin:0 14px 14px;padding:10px 12px;background:var(--lil);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:16px;padding:18px;background:linear-gradient(160deg,var(--card),transparent);animation:rise .45s ease both;transition:transform .3s,border-color .3s;cursor:pointer}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}.card.open{grid-column:1/-1;cursor:default;border-color:var(--gold)}.card.open:hover{transform:none}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.tag{font-size:13px;color:var(--gold)}
+.star{background:none;border:0;color:var(--gold);font-size:22px;cursor:pointer;padding:0;line-height:1;transition:transform .25s}.star:active{transform:scale(1.4)}
+.card h3{font-size:20px;margin:8px 0 6px}.card p{margin:0;color:var(--mut);font-size:15px}
+.body{margin-top:16px;animation:rise .4s ease both}.flds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.body label{display:block;font-weight:700;font-size:13px;margin-bottom:4px}
+.body input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.body input:focus{border-color:var(--gold);outline:0}
+pre{white-space:pre-wrap;word-wrap:break-word;margin:14px 0 0;padding:16px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:15px/1.6 'DM Sans',sans-serif}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:40px 0}
+.vtabs{display:flex;gap:6px;padding:4px;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-top:12px}
+.vtabs button{flex:1;border:0;background:none;color:var(--mut);padding:11px 8px;border-radius:10px;font:600 14px 'DM Sans',sans-serif;cursor:pointer;transition:all .3s}.vtabs button.on{background:linear-gradient(135deg,var(--gold),#f3d27a);color:#1a1131}
+.sec{margin-bottom:36px}.sec h2{font-size:23px;display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px}.sec h2 span{color:var(--gold);font-size:14px}
+.sec h2 em{font:600 12px 'DM Sans',sans-serif;font-style:normal;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:2px 10px}
+.tag{text-transform:uppercase;letter-spacing:.06em;font-size:12px}.lnk{display:inline-block;margin-top:14px;color:var(--gold);font-weight:700;font-size:14px}
+.cls{background:none;border:1px solid var(--line);color:var(--mut);border-radius:8px;padding:12px 16px;margin-left:8px;cursor:pointer;font:500 14px 'DM Sans',sans-serif}
+.vbar{margin-bottom:6px}#vq{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font:inherit}#vq:focus{border-color:var(--gold);box-shadow:0 0 0 4px var(--glow2);outline:0}
+.vtabs{overflow-x:auto}.vtabs button{flex:1 0 auto;white-space:nowrap;padding:11px 14px}
+.vchips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 2px}.vchips button{flex:none;border:1px solid var(--line);background:none;color:var(--ink);padding:8px 16px;border-radius:99px;cursor:pointer;font:500 14px 'DM Sans',sans-serif;transition:all .25s}.vchips button.on{border-color:var(--gold);color:var(--gold);background:var(--lil)}
+#vcount{color:var(--mut);font-size:14px;margin:14px 0}
+.pk{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:1px solid var(--line);color:var(--ink);padding:12px 14px;border-radius:10px;margin-top:8px;cursor:pointer;font:500 15px 'DM Sans',sans-serif;transition:all .25s}.pk:hover{border-color:var(--gold);transform:translateX(4px)}.pk.done{color:var(--mut)}.pk b{color:var(--gold);min-width:20px}.pk small{margin-left:auto;color:var(--mut)}
+#vdt{width:100%;padding:13px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit;margin-top:6px}
 </style></head><body><div class="wrap">
 <header class="hero"><div class="brand">Digitera Levi · Build. Share. Earn.</div>
 <h1>The Kita Blueprint</h1>
@@ -96,7 +120,7 @@ input[type=range]{padding:0;accent-color:var(--gold)}
 <label for="pc">Core price (₱)</label><input id="pc" type="number" min="1" value="1500">
 <button class="btn" id="go3">Build my offer</button><div id="o3"></div></section>
 
-<section class="panel" id="p4"><h2>Script &amp; Prompt Vault</h2><p class="sub">The exact words for every stage of the sale. Copy, replace the [brackets], send.</p>
+<section class="panel" id="p4"><h2>Scripts &amp; Prompts</h2><p class="sub">The exact words for every stage of the sale. Copy, replace the [brackets], send.</p>
 <div class="chips" id="chips"></div><div id="pl"></div></section>
 
 <section class="panel" id="p5"><h2>Goal Math</h2><p class="sub">Remove the guesswork. See how many people you need to talk to.</p>
@@ -111,6 +135,8 @@ input[type=range]{padding:0;accent-color:var(--gold)}
 <div class="row"><div><label for="bn">Your brand name</label><input id="bn" placeholder="e.g. Maria's Digital Studio"></div><div><label for="an">Your name (author)</label><input id="an" placeholder="e.g. Maria Santos"></div></div>
 <button class="btn" id="go9">Generate my PLR library</button><div id="o9"></div>
 <details style="margin-top:28px"><summary>PLR license: what you can and can't do</summary><p>This license applies to all 5 products in the vault.</p><p><b>You can:</b> rename them, edit it, add your own content, put your name and brand on it, and sell it to your customers as your own product.</p><p><b>You can't:</b> resell or give away the PLR rights, share the original unedited file, or claim this kit as a PLR product you're distributing to other sellers.</p></details></section>
+<section class="panel" id="p10"><h2>The Prompt Vault</h2><p class="sub"><span id="vn"></span> guides, prompts, and image prompts, plus ready-made Goal Packs and a Prompt Doctor that upgrades your own prompts. Open anything, type your details, then copy it or open it straight in ChatGPT or Claude.</p>
+<div id="vtoday"></div><div class="vbar"><input id="vq" type="search" placeholder="Search prompts, guides, and ideas..." aria-label="Search the Prompt Vault"><div class="vtabs" id="vtabs"></div><div class="vchips" id="vchips"></div></div><p id="vcount"></p><div id="vgrid"></div></section>
 <p class="note">All numbers and examples are guidance, not a guarantee of income. Results depend on your action. © Digitera Levi</p></div>
 <script>
 const $=id=>document.getElementById(id),esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;'),peso=n=>'₱'+Math.round(n).toLocaleString('en-US'),RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -118,7 +144,7 @@ function fx(c,x,y,n){if(RM)return;for(let i=0;i<n;i++){const e=document.createEl
 document.addEventListener('click',e=>fx('rp',e.clientX,e.clientY,1));
 const win=el=>{const r=el.getBoundingClientRect();fx('pt',r.left+r.width/2,r.top+r.height/2,12)};
 function cu(el,to,f){f=f||(n=>Math.round(n));const from=el._v||0;el._v=to;if(RM){el.textContent=f(to);return}const t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/650),e=1-Math.pow(1-p,3);el.textContent=f(from+(to-from)*e);if(p<1)requestAnimationFrame(s)})(t0)}
-const tabs=[['Start Here',7],['PLR Vault',9],['Principles',0],['Psychology',8],['Route',1],['Offer Score',2],['Offer Studio',3],['Vault',4],['Goal Math',5],['7-Day Plan',6]];
+const tabs=[['Start Here',7],['PLR Vault',9],['Prompt Vault',10],['Principles',0],['Psychology',8],['Route',1],['Offer Score',2],['Offer Studio',3],['Scripts',4],['Goal Math',5],['7-Day Plan',6]];
 tabs.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t[0];b.setAttribute('role','tab');b.onclick=()=>show(i);$('nav').appendChild(b)});
 function show(i){tabs.forEach((t,k)=>{$('p'+t[1]).classList.toggle('on',k===i);$('nav').children[k].setAttribute('aria-selected',k===i)});$('nav').children[i].scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});if(tabs[i][1]==2)score()}show(0);
 $('st').onclick=()=>{show(0);$('nav').scrollIntoView({behavior:'smooth'})};
@@ -153,12 +179,12 @@ let cat='Script';function dV(){$('chips').innerHTML='';['Script','AI Prompt'].fo
 $('pl').innerHTML='';V.filter(v=>v[0]==cat).forEach(v=>{const d=document.createElement('div');d.className='pr';d.innerHTML=`<b>${v[1]}</b><p>${esc(v[2])}</p>`;const b=document.createElement('button');b.className='btn alt';b.textContent='Copy';b.onclick=()=>cp(v[2],b);d.appendChild(b);$('pl').appendChild(d)})}dV();
 function calc(){const g=+$('g').value||0,p=+$('pp').value||1,c=Math.min(100,Math.max(1,+$('cr').value||1)),n=Math.ceil(g/p),l=Math.ceil(n/(c/100));cu($('s1'),n);cu($('s2'),l);cu($('s3'),Math.ceil(l/30));cu($('s4'),g/4.3,peso)}
 ['g','pp','cr'].forEach(i=>$(i).oninput=calc);calc();
-const W=[['Day 1: Decide',['Pick 1 niche and 1 problem to solve','Write: "I help ___ get ___ in ___ days."','Build your offer and 3 price tiers in Offer Studio']],['Day 2: Prepare',['Make 3 samples you can show','Set up your payment details (GCash or bank)','Clean up your Facebook profile']],['Day 3: Go public',['Post your launch announcement (copy it from the Vault)','Message 10 prospects','Log every reply in your tracker']],['Day 4: Follow up',['Follow up with everyone who saw or replied','Message 10 more prospects','Offer a free mini-sample to 3 people']],['Day 5: Get your first yes',['Close your first client at launch price','Start delivering right away','Post a progress update']],['Day 6: Deliver and collect proof',['Deliver beyond expectations','Ask for a testimonial and screenshot','Send your final follow-up (Day 5 script)']],['Day 7: Review and scale',['Put your numbers in Goal Math','Ask each client for 2 referrals','Set aside 10% of income and plan your next 7 days']]];
+const W=[['Day 1: Decide',['Pick 1 niche and 1 problem to solve','Write: "I help ___ get ___ in ___ days."','Build your offer and 3 price tiers in Offer Studio']],['Day 2: Prepare',['Make 3 samples you can show','Set up your payment details (GCash or bank)','Clean up your Facebook profile']],['Day 3: Go public',['Post your launch announcement (copy it from the Scripts tab)','Message 10 prospects','Log every reply in your tracker']],['Day 4: Follow up',['Follow up with everyone who saw or replied','Message 10 more prospects','Offer a free mini-sample to 3 people']],['Day 5: Get your first yes',['Close your first client at launch price','Start delivering right away','Post a progress update']],['Day 6: Deliver and collect proof',['Deliver beyond expectations','Ask for a testimonial and screenshot','Send your final follow-up (Day 5 script)']],['Day 7: Review and scale',['Put your numbers in Goal Math','Ask each client for 2 referrals','Set aside 10% of income and plan your next 7 days']]];
 const op=new Set(),G=[
 [["Think of 3 people you know who sell things online, like someone who sells cakes, clothes, or snacks.","Ask each one: \"What is the hardest part of selling?\" Maybe their page looks messy, they reply slowly, or their photos are dark.","Pick ONE hard thing you can help with. This is your problem.","Fill in this sentence: \"I help [who] get [result].\" Example: \"I help cake sellers get more orders with a clean Facebook page.\"","Open the Offer Studio tab, type it in, and tap Build my offer. Copy the Direct-response post. Save it, you'll post it on Day 3."],["Be specific. Premium brands say one clear thing. \"We do everything\" sounds cheap.","Ask an AI chat assistant: \"Give me 10 problems [who] have.\" Then pick the one you truly understand."]],
 [["Open Canva (it's free). Make 3 samples that show what you do, like 3 posts, 3 logos, or 3 sample replies.","Use the same 2 colors and the same font on all 3 so they look like a matching set.","Save them in one folder named after your brand.","Check your payment details. Make sure your GCash name and number are right, and take a screenshot you can send.","Fix your Facebook profile: a clear photo, a one-line bio like \"I help [who] get [result],\" and a message button."],["Matching colors and fonts look expensive. Messy styles look cheap.","If you use AI to write your sample text, read it out loud and fix anything that doesn't sound like you. People can feel when it's real."]],
-[["Open the Vault tab and copy \"Launch announcement post.\"","Replace every [bracket] with your own words, then post it on Facebook.","Make a list of 10 people who might need your help: friends of friends, small sellers, people in groups you're in.","Copy the \"First message\" script and send it to each one. Change the name every time.","Write each name and their answer in a notebook or a Google Sheet."],["Record a 15-second video saying hello and what you do. People trust faces and voices.","Reply fast. Answering within minutes feels premium.","Never send the same copy-paste to everyone. A personal message beats a hundred blasts."]],
-[["Look at your list. Who saw your message but didn't answer?","Copy \"Follow-up, Day 2\" from the Vault and send it nicely.","Send the First message to 10 new people.","Pick 3 people who seem interested and offer a free mini-sample. Keep it small, like 1 post or 1 logo idea.","Write every answer in your sheet."],["Be kind, not pushy. No reply usually means busy, not no.","Send a short voice note: \"Hi, I made this just for you.\" A personal touch stands out in a world full of bots.","Send samples as a screenshot so they can see it right away on their phone."]],
+[["Open the Scripts tab and copy \"Launch announcement post.\"","Replace every [bracket] with your own words, then post it on Facebook.","Make a list of 10 people who might need your help: friends of friends, small sellers, people in groups you're in.","Copy the \"First message\" script and send it to each one. Change the name every time.","Write each name and their answer in a notebook or a Google Sheet."],["Record a 15-second video saying hello and what you do. People trust faces and voices.","Reply fast. Answering within minutes feels premium.","Never send the same copy-paste to everyone. A personal message beats a hundred blasts."]],
+[["Look at your list. Who saw your message but didn't answer?","Copy \"Follow-up, Day 2\" from the Scripts tab and send it nicely.","Send the First message to 10 new people.","Pick 3 people who seem interested and offer a free mini-sample. Keep it small, like 1 post or 1 logo idea.","Write every answer in your sheet."],["Be kind, not pushy. No reply usually means busy, not no.","Send a short voice note: \"Hi, I made this just for you.\" A personal touch stands out in a world full of bots.","Send samples as a screenshot so they can see it right away on their phone."]],
 [["When someone asks \"How much?\", send your 3 prices (Starter, Core, VIP) from Offer Studio.","If they say it's expensive, use the \"That's expensive\" script and offer the Starter.","When they say yes, copy \"Closing the sale\" and send your payment details.","After they pay, say thank you and ask for the details you need.","Post a progress update like \"Day 5: working on my first client!\" Don't share private details without permission."],["Start the work within an hour of payment. Speed feels premium.","Tell them what happens next in 3 simple steps so they feel safe.","Always say thank you. Kindness is memorable."]],
 [["Do the work slowly and carefully. Check spelling, colors, and links. Show it to a friend first if you can.","Put it in one neat Google Drive folder with a clear name, like \"Maria Cake Page Kit - Final.\"","Record a 1-minute screen video explaining what you made. Your phone's screen recorder is enough.","Ask: \"Can you share one sentence about your experience? A screenshot is fine!\" Ask permission to post it.","Send the \"Follow-up, Day 5\" message to people who never replied."],["Under-promise, then over-deliver. Add one small bonus, like an extra caption.","Use AI to double-check spelling, but you make the final call.","A thank-you voice note after delivery turns buyers into fans."]],
 [["Count: how many messages did you send? How many replied? How many said yes?","Open the Goal Math tab and type in your numbers to see what to do next.","Use the \"Ask for a testimonial and referral\" script to get 2 names from each client.","Move 10% of what you earned into your grow fund (a separate GCash or bank pocket).","Pick your goal for next week: more messages, a better offer, or a monthly plan for your first client."],["Keep a win list: every yes and every reply. Seeing wins builds confidence.","Turn your best sample into a case study post: the problem, what you did, the result.","Save your best replies as templates so next week is faster."]]];
@@ -426,4 +452,198 @@ $('go9').onclick=()=>{const b=$('bn').value.trim()||'Your Brand',a=$('an').value
 $('o9').innerHTML=`<div class="lib">${PRODS.map((p,i)=>`<div class="pc"><div class="cov" style="background:linear-gradient(150deg,${p[2][0]},${p[2][1]})"><small>${esc(b)}</small><b>${p[0]}</b><small>by ${esc(a)}</small></div><h3>${p[0]}</h3><p>${p[1]}</p><button class="btn alt" data-a="v" data-i="${i}">Preview</button> <button class="btn alt" data-a="c" data-i="${i}">Copy</button> <button class="btn alt" data-a="d" data-i="${i}">Download</button></div>`).join('')}</div><button class="btn" id="ca">Copy all 5 products</button><div id="pv"></div>`;
 $('o9').querySelectorAll('button[data-a]').forEach(x=>x.onclick=()=>{const i=+x.dataset.i,k=x.dataset.a;if(k=='v'){$('pv').innerHTML=`<div class="box"><b>${PRODS[i][0]}</b>\n${esc(T[i])}</div>`;win(x);$('pv').scrollIntoView({behavior:'smooth'})}else if(k=='c')cp(T[i],x);else{try{const u=URL.createObjectURL(new Blob([T[i]],{type:'text/plain'})),l=document.createElement('a');l.href=u;l.download=PRODS[i][0].toLowerCase().replace(/[^a-z0-9]+/g,'-')+'.txt';l.click();win(x)}catch(e){x.textContent='Use Copy'}}});
 $('ca').onclick=e=>cp(T.join('\n\n==========\n\n'),e.target);win($('go9'))};
+(function(){
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const NG=[
+[`G|Digital Products & Sales`,`Build your first digital product in a weekend`,`A simple 3-step plan from idea to file.`,`Saturday: pick one problem for one audience, then outline 5 to 7 steps that solve it.
+Sunday morning: write or design it in Canva or Google Docs. Keep it short and useful.
+Sunday afternoon: name it after the result, add a cover, and export a PDF.
+Done beats perfect. You can improve version 2 after real feedback.`],
+[`G|Digital Products & Sales`,`Price your digital product with confidence`,`Three simple rules so you stop guessing.`,`1. Price by the result, not the page count.
+2. Start with a founding price for your first buyers, and tell them honestly it will go up.
+3. Offer 3 tiers (Starter, Core, VIP) so buyers choose which one, not whether to buy.
+Raise your price after your first 5 happy buyers.`],
+[`G|Branding & Marketing`,`Create a simple brand kit in Canva`,`Colors, fonts, and a logo in 20 minutes.`,`1. Pick 2 main colors and 1 accent.
+2. Pick 2 fonts: one for headings, one for body.
+3. Make a simple logo with your name or initials.
+4. Save everything in Canva's Brand Kit.
+Use the same set on every post. Consistency makes you look bigger than you are.`],
+[`G|Branding & Marketing`,`Write a bio that sells in one line`,`Tell people exactly who you help.`,`Use this formula: "I help [who] get [result] with [method]."
+Example: "I help home bakers get more orders with clean Facebook pages."
+Add one proof point only if it's true, and a clear way to message you.`],
+[`G|Business & Freelancing`,`Land your first freelance client`,`Five steps, no experience required.`,`1. Pick one service and one niche.
+2. Make 3 samples.
+3. List 10 businesses that need it.
+4. Message them with a free mini-sample.
+5. Follow up twice, politely.
+Most first clients come from conversations, not from waiting.`],
+[`G|Business & Freelancing`,`Send a proposal that gets a yes`,`Keep it to one page.`,`Include their problem in your words, what you'll deliver, the timeline, 3 price options, and one clear next step. Send it on Messenger or as a PDF, then follow up in 2 days.`],
+[`G|Content Strategy`,`Plan a week of content in 30 minutes`,`A simple 5-post rhythm.`,`Monday: tip. Tuesday: story. Wednesday: proof or behind the scenes. Thursday: answer a question. Friday: offer.
+Write all 5 hooks first, then fill in the rest. Batch your photos on one day.`],
+[`G|Content Strategy`,`Turn one idea into five posts`,`Stop starting from zero every day.`,`Take one idea and make a short post, a carousel, a Reel, a story, and a question for the comments. Same message, five formats. The "Repurpose one post into five" prompt does it fast.`],
+[`G|Faceless Content`,`Start a faceless page`,`Grow without showing your face.`,`Pick a niche you know. Use your voice, text on screen, screen recordings, or simple graphics. Build trust with consistent posting, helpful tips, and a clear point of view. Your brand can be a name and a style, not a face.`],
+[`G|Faceless Content`,`Make faceless videos with free tools`,`A lean workflow.`,`1. Write a 30-second script.
+2. Record a voiceover on your phone.
+3. Use your own clips or media licensed for your use.
+4. Add captions and music in a free editor.`],
+[`G|Money & Personal Finance`,`The 4-pocket system for irregular income`,`Organize money from each sale.`,`When money arrives, split it into 4 pockets: Bills, Business, Savings, and Personal. Pick percentages that fit your situation and keep them the same every time. This is a simple habit, not financial advice. Check with a licensed professional for big decisions.`],
+[`G|Money & Personal Finance`,`Pay yourself first from every sale`,`A small habit that builds a cushion.`,`Set a fixed percentage, even 5 to 10%, that moves to a separate account right after a payment arrives. Start small and stay consistent. The habit matters more than the amount.`],
+[`G|Productivity & Mindset`,`The 20-minute daily action rule`,`Small steps beat big plans.`,`Pick one money-making action: message 5 people, post once, or improve one sample. Set a timer for 20 minutes and do only that. Check it off. Momentum grows from tiny wins.`],
+[`G|Productivity & Mindset`,`Beat the fear of posting`,`You don't need to be ready.`,`Fear shrinks when you act. Post one simple, honest, helpful tip. Tell yourself: "I'm learning in public." Most people are too busy to judge you, and the ones who matter will respect the effort.`],
+[`G|Social Monetization`,`Turn followers into customers`,`Make the next step obvious.`,`Pin a post that says what you offer. Put a clear link or "message me START" in your bio. Reply to every comment and DM. Ask one question in every post to start a conversation.`],
+[`G|Social Monetization`,`Sell without sounding salesy`,`Help first, offer second.`,`Use the 4-to-1 rule: four helpful posts, then one offer. Explain the problem, show a quick fix, then say "I made a full version for those who want it." People buy from those who help.`],
+[`G|Career & Side Hustles`,`Pick a side hustle that fits your hours`,`Match the work to your time.`,`List your free hours, your skills, and your budget. With 1 to 2 hours a day, try simple services or reselling digital products. With 3 to 4 hours, try freelance design or writing. Start with the option you can begin today using what you already have.`],
+[`G|Career & Side Hustles`,`Build a simple portfolio`,`Show your work in one link.`,`Pick your best 3 to 5 samples. For each, write the problem, what you did, and the result. Put them in a Canva website, a Google Drive folder, or one Facebook album. Add your message button at the top.`],
+[`G|Writing & Communication`,`Write messages people actually answer`,`Short, specific, easy to reply to.`,`Use their name. State one reason you're messaging. Ask one easy question. Keep it under 50 words. Avoid walls of text and vague "let's connect."`],
+[`G|Writing & Communication`,`Reply to customers like a pro`,`Calm, clear, and kind.`,`Greet by name, answer the question first, give the next step, and say thanks. Save your best replies as templates. If something went wrong, apologize briefly, fix it, and follow up.`],
+[`G|Privacy & Safety`,`Protect yourself from online scams`,`Spot the red flags.`,`Red flags: pressure to pay fast, payment to an unknown account, offers that sound too good, and requests for OTPs or passwords. Never share an OTP. Verify accounts before sending money. When in doubt, pause and ask someone you trust.`],
+[`G|Privacy & Safety`,`Keep your accounts secure`,`A five-minute checkup.`,`Turn on two-factor authentication. Use a unique password for each important account. Update your recovery email and phone. Log out of shared devices. Never send passwords through chat.`],
+[`G|Facebook & Messenger Selling`,`Write a Marketplace listing that sells`,`Title, photos, and price that get messages.`,`1. Title: product plus one key benefit, like "Handmade Soy Candle, 40-Hour Burn".
+2. Photos: bright natural light, plain background, 4 angles.
+3. Description: what it is, size or specs, price, location, and how to order.
+4. Reply within minutes. Fast replies win sales.
+Never post fake discounts or fake stock counts.`],
+[`G|Facebook & Messenger Selling`,`Run a Messenger-first sales flow`,`Greet, answer, offer, close.`,`1. Greet by name and ask what they're looking for.
+2. Answer their question in one short message.
+3. Recommend one option and give the price.
+4. Send payment details and a clear next step.
+5. Confirm, deliver, and ask for feedback.
+Save each step as a quick reply so you can answer in seconds.`],
+[`G|Facebook & Messenger Selling`,`Make your Facebook page look trustworthy`,`The 6 things buyers check first.`,`1. A clear profile photo and cover.
+2. A one-line description of what you sell.
+3. A pinned post with prices and how to order.
+4. Real photos of your products or work.
+5. Contact details and your response time.
+6. Honest posts: no fake reviews, no stolen photos.`],
+[`G|AI Automation`,`Automate replies without losing the human touch`,`Save time, keep trust.`,`Use saved replies for FAQs, a spreadsheet for orders, and AI to draft first versions of messages. Always read before sending and add the customer's name or a personal line. Automate the boring parts and keep the relationship parts human.`]];
+const NP=[
+[`P|Faceless Content`,`Faceless video script`,`A script you can voice over.`,`Write a 30-second faceless video script about [topic] for [audience]. Include a hook, 3 points, a closing line, and on-screen text for each line. Suggest what visuals to show.`],
+[`P|Faceless Content`,`Faceless niche ideas`,`Find a niche that fits you.`,`Give me 15 niche ideas for a faceless page based on my interests: [your interests]. For each, name the audience, 3 content ideas, and how it could earn money. Keep it realistic.`],
+[`P|Social Monetization`,`Link-in-bio offer copy`,`Short lines that invite action.`,`Write 5 short link-in-bio lines that invite [audience] to try [product or service]. Each under 12 words, friendly, with a clear action.`],
+[`P|Money & Personal Finance`,`Irregular income budget`,`A simple template for slow and good months.`,`I earn irregular income from [source], usually between [low amount] and [high amount] a month. Build a simple budget template with 4 pockets and a rule for good months and slow months. Keep it educational.`],
+[`P|Career & Side Hustles`,`Side hustle matcher`,`Options that fit your time and skills.`,`I have [hours] hours a day, these skills: [skills], and a budget of [budget]. Suggest 5 side hustle options I can start this week, with first steps and realistic expectations.`],
+[`P|Career & Side Hustles`,`Portfolio project brief`,`Samples to build your portfolio.`,`Create 3 sample project briefs I can complete for my portfolio as a [role]. Each should include the problem, the deliverables, and how to present the result.`],
+[`P|Writing & Communication`,`Polite message rewriter`,`Clear, kind, and short.`,`Rewrite this message so it's polite, clear, and under 60 words. Keep a friendly Taglish tone. Message: [paste message]`],
+[`P|Writing & Communication`,`Complaint reply`,`Keep their trust when things go wrong.`,`A customer sent this complaint: [paste complaint]. Write a calm, respectful reply that apologizes, offers a fix, and keeps their trust. Under 80 words.`],
+[`P|Facebook & Messenger Selling`,`Marketplace listing writer`,`Listings that get messages.`,`Write a Facebook Marketplace listing for [product]. Include a title with one key benefit, a short description with size or specs, price [price], location [location], and how to order. Friendly, honest tone. No fake claims.`],
+[`P|Facebook & Messenger Selling`,`Messenger quick replies`,`Answer faster, close more.`,`Write 10 quick replies for my Messenger shop that sells [product]: greeting, price, availability, payment, delivery, thanks, follow-up, and out of stock. Each under 35 words, friendly Taglish.`],
+[`P|AI Automation`,`Automation planner`,`Find what to automate first.`,`I run a small online business selling [product]. Here are my daily tasks: [list your tasks]. Tell me which 3 to automate or turn into templates first, how to do it with free tools, and what must stay personal.`]];
+const NI=[
+['Images','Food and drink photo','Appetizing shots for sellers.','Appetizing photo of [food or drink] on a [surface], natural side light, steam or condensation details, shallow depth of field, warm tones, restaurant-quality food photography, 4:5 vertical'],
+['Images','Cozy workspace scene','A calm scene with room for text.','A cozy home workspace with a laptop, notebook, and warm lamp, soft morning light, [color palette] tones, calm and inspiring mood, wide empty area for text, 16:9'],
+['Images','Flat icon set','Consistent icons for your brand.','A set of 6 flat vector icons for [topic], consistent line weight, rounded corners, [colors], on a plain white background, no text'],
+['Images','Packaging mockup','See your product in a box or bag.','Realistic mockup of a [box or bag] for [brand name], clean modern label, [colors], on a neutral studio background with soft shadows, premium look, 4:5 vertical']];
+const IC={'Premium product flat-lay':'Product Photos','Lifestyle product shot':'Product Photos','Food and drink photo':'Product Photos','Brand mood board':'Branding & Logos','Minimal logo concept':'Branding & Logos','Flat icon set':'Branding & Logos','Social post background':'Social & Thumbnails','Bold thumbnail background':'Social & Thumbnails','Cozy workspace scene':'Social & Thumbnails','E-book cover mockup':'Mockups & Ads','Ad creative background':'Mockups & Ads','Packaging mockup':'Mockups & Ads'};
+const TB=x=>x[0]=='Images'?'Image Prompts':(x[0]=='Guides'||x[0][0]=='G')?'Guides & Prompts':'Creator Prompts';
+const CT=x=>x[0].includes('|')?x[0].split('|')[1]:x[0]=='Images'?IC[x[1]]:({Guides:'Prompting & AI Fundamentals',Sales:'Sales & Offers',Content:'Content Strategy',Systems:'Business Systems'})[x[0]];
+const D=[
+['Guides','How to write a prompt that works','The 4-part formula behind every prompt in this vault.',`A good prompt has 4 parts. Add all 4 and your results get better right away.
+
+1. ROLE: Tell the AI who to be. "Act as a friendly sales coach for Filipino online sellers."
+2. TASK: Say exactly what you want. "Write 5 first-message DMs."
+3. CONTEXT: Give real details: who you sell to, what you sell, your price, your goal.
+4. FORMAT: Say how the answer should look. "Under 50 words each. Taglish. Numbered list."
+
+Tip: if the first answer is not great, don't start over. Reply with "Make it shorter and more specific" or "Give me 5 more options."`],
+['Guides','Use this vault in 10 minutes','A simple routine so you actually use these prompts.',`Do this once a day:
+
+1. Pick ONE prompt that matches your goal today (sell, post, or organize).
+2. Type your real details into the boxes.
+3. Tap Copy and paste it into your favorite AI chat.
+4. Read the answer and change anything that doesn't sound like you.
+5. Use it today. Don't save it for later.
+
+Star your favorites so they show up in the Saved tab.`],
+['Guides','Make AI sound like you','Three ways to stop sounding like a robot.',`1. Paste 3 of your own old posts and ask: "Describe my writing style in 5 rules." Save those rules and paste them at the start of every prompt.
+2. Add real stories, real names, and real numbers. AI can't invent your life.
+3. Read the result out loud. If you wouldn't say it, change it.
+
+Your voice is the one thing nobody can copy.`],
+['Guides','Check before you post','A quick quality checklist for AI-made content.',`Before you post or send anything made with AI, check:
+
+- Facts: are the numbers, prices, and claims true?
+- Promises: did it promise results you can't guarantee? Remove them.
+- Reviews: never post made-up testimonials. Only use real ones, with permission.
+- Originality: does it sound like you, not like everyone else?
+- Spelling and links: test every link on your phone.
+
+Trust takes months to build and one fake claim to lose.`],
+['Sales','Offer idea generator','Find what to sell and what to charge.',`Act as an offer strategist for Filipino online businesses. I have the skill of [your skill] and I want to help [your audience]. Give me 10 offer ideas. For each one, include the result the customer gets, a realistic price in pesos, and why someone would pay for it. Keep each idea under 40 words.`],
+['Sales','Sales page writer','A full page that sells your product.',`Write a sales page for [product name], which helps [who] get [result] without [pain]. Price: [price]. Include: a headline, the problem, what's inside, 5 benefits, who it's for and not for, 4 FAQs, and a call to action. Use a warm, direct tone. Do not invent testimonials or income claims.`],
+['Sales','First message DMs','Polite openers that get replies.',`Write 5 different first-message DMs I can send to [type of business owner]. I offer [your service], which helps them [result]. Each message must be under 50 words, friendly, not pushy, and end with an easy yes-or-no question. Language: Taglish.`],
+['Sales','Objection crusher','Honest replies to "mahal" and "pag-iisipan ko".',`List the 10 most common objections people have about buying [product] at [price]. For each one, write a short, honest, respectful reply I can send in chat. Never pressure or lie. Language: Taglish.`],
+['Sales','3-tier price ladder','Starter, Core, and VIP packages.',`Create 3 packages for my service [service] for [audience]: Starter, Core, and VIP. For each, list what's included, the turnaround time, and a price in pesos. Core should be my best seller. My cheapest acceptable price is [lowest price].`],
+['Sales','Follow-up sequence','Three messages that win the "seen" crowd.',`Write a 3-message follow-up sequence for people who saw my offer for [product] but didn't reply. Message 1 for Day 2, Message 2 for Day 5, Message 3 for Day 9. Keep each under 40 words, polite, and with a different angle each time. Language: Taglish.`],
+['Sales','Founding-member launch post','Launch honestly, even with no reviews yet.',`Write a Facebook launch post for [product], aimed at [audience]. I'm new, so the post should be honest about that. Founding price: [price] for the first [number] buyers, then it goes up. Include a clear call to action: comment "START". Do not include fake testimonials or fake scarcity.`],
+['Sales','Customer interview questions','Learn what people will actually pay for.',`Give me 10 questions to ask [audience] so I can learn what problem they most want solved and what they'd pay for. Mix easy questions and deeper ones. Add a short note on what a good answer looks like for each.`],
+['Content','30-day content calendar','A month of posts in one go.',`Create a 30-day content calendar for [business] that sells [product] to [audience] on [platform]. Mix tips, stories, proof, and offers. For each day give: the topic, the hook, and a call to action. Present it as a table. Language: Taglish.`],
+['Content','Hook generator','Scroll-stopping first lines.',`Write 20 scroll-stopping hooks about [topic] for [platform]. Mix these styles: a question, a bold claim, a mistake to avoid, a quick story, and a number list. Each hook under 15 words. Audience: [audience].`],
+['Content','30-second reel script','Hook, 3 points, and a call to action.',`Write a 30-second Reel script about [topic] for [audience]. Structure: a hook in the first 3 seconds, 3 quick points, and a call to action to [action]. Include on-screen text suggestions. Casual Taglish tone.`],
+['Content','8-slide carousel outline','Educate and sell in swipes.',`Outline an 8-slide carousel on [topic] for [audience]. Slide 1 is a strong hook, slides 2 to 7 teach one idea each in under 20 words, and slide 8 is a call to action to [action]. Add a caption under 80 words.`],
+['Content','Caption rewriter','Make your caption sharper in your voice.',`Rewrite this caption so it's clearer, shorter, and more engaging, while keeping my voice casual and friendly. Give me 3 versions. Caption: [paste your caption]`],
+['Content','Soft-sell story sequence','5 story slides that sell without begging.',`Create a 5-slide Instagram or Facebook story sequence that softly sells [product] to [audience]. Slide 1 a relatable problem, slide 2 a quick tip, slide 3 behind the scenes, slide 4 the offer, slide 5 a link or reply prompt. Keep each slide under 20 words.`],
+['Content','Repurpose one post into five','Get 5x from content you already made.',`Turn this post into 5 different formats: a Reel script, a carousel outline, a story, a tweet-length version, and an email. Keep the same core message. Post: [paste your post]`],
+['Content','Brand voice builder','Teach AI how you sound.',`Read these 3 samples of my writing and describe my brand voice in 5 simple rules I can paste into future prompts. Include words I often use and words I avoid. Samples: [paste 3 posts]`],
+['Images','Premium product flat-lay','A clean, high-end product photo.',`Premium flat-lay photo of [product] on a [surface], soft natural window light, shallow depth of field, [color palette] color palette, minimal styling, high-end commercial photography, 4:5 vertical`],
+['Images','Lifestyle product shot','Your product in a real-life moment.',`A [type of person] using [product] in a bright modern [setting], candid moment, warm natural light, authentic Filipino lifestyle, soft focus background, editorial photography, 4:5 vertical`],
+['Images','Brand mood board','Find your look before you design.',`A brand mood board for [brand name], a [type of business] for [audience]. Colors: [colors]. Style: [style, e.g. modern, warm, premium]. Include textures, a sample color palette, typography feel, and photo style. Clean layout, flat design.`],
+['Images','Social post background','Clean backgrounds with room for text.',`A clean abstract background in [colors] with a soft gradient and subtle grain, large empty space in the center for text, modern and minimal, 1080x1350, no text, no logos`],
+['Images','Minimal logo concept','Start your logo ideas.',`Minimal logo concept for [brand name], a [type of business]. Style: [style]. Simple geometric shape, clean lines, vector look, [color], on a plain white background, no text`],
+['Images','E-book cover mockup','Make your digital product look real.',`Realistic mockup of an e-book cover titled "[title]" on a tablet resting on a wooden desk next to a cup of coffee, soft shadows, warm light, premium look, 4:5 vertical`],
+['Images','Ad creative background','Eye-catching visuals for promos.',`A bold, eye-catching ad background for [product] in [colors], dynamic light streaks, depth and shine, plenty of empty space on the left for a headline, modern premium feel, 1080x1080`],
+['Images','Bold thumbnail background','High-contrast visuals for videos.',`A bold high-contrast thumbnail background for a video about [topic]: [main color] and [accent color], dramatic lighting, strong depth, empty space on the right for text, 16:9, no text`],
+['Systems','Weekly plan for a solo seller','Plan your week around your real hours.',`I'm a solo online seller selling [product]. I have [hours] hours a day. Build me a weekly plan with specific tasks for posting, replying, outreach, and admin. Add one daily 20-minute focus task that grows sales. Keep it realistic.`],
+['Systems','Customer reply bank','Answer FAQs in seconds.',`Write 15 ready-made replies for the most common questions customers ask about [business], such as price, delivery, payment, refunds, and availability. Friendly Taglish tone, each under 40 words.`],
+['Systems','Google Sheets tracker','Track orders, payments, and follow-ups.',`Design a Google Sheets tracker for an online seller selling [product]. List the columns, the formulas, and a simple dashboard that shows total sales, unpaid orders, and who to follow up with today. Explain how to set it up step by step.`],
+['Systems','SOP writer','Turn what you do into steps.',`Turn this process into a clear step-by-step SOP a beginner can follow without asking questions. Include a checklist and common mistakes to avoid. Process: [describe your process]`],
+['Systems','Order confirmation messages','Look professional with every order.',`Write 4 message templates for [business]: order received, payment confirmed, order shipped or delivered, and a thank-you with a request for feedback. Warm, professional Taglish, each under 50 words.`],
+['Systems','Weekly review coach','Let AI spot what is working.',`Here are my numbers for this week: [messages sent, replies, sales, income]. Tell me what's working, what to stop doing, and my next 3 actions. Be honest, specific, and encouraging.`]
+].concat(NG,NP,NI).map((x,i)=>({id:i,k:TB(x),c:CT(x),t:x[1],d:x[2],p:x[3]}));
+const TBS=['Guides & Prompts','Creator Prompts','Image Prompts','Goal Packs','Prompt Doctor'],LIB=['Guides & Prompts','Creator Prompts','Image Prompts'];
+const ORD={'Guides & Prompts':['Facebook & Messenger Selling','Digital Products & Sales','Branding & Marketing','Business & Freelancing','Content Strategy','Faceless Content','Money & Personal Finance','Productivity & Mindset','Social Monetization','Career & Side Hustles','Writing & Communication','Privacy & Safety','AI Automation','Prompting & AI Fundamentals'],'Creator Prompts':['Facebook & Messenger Selling','Sales & Offers','Content Strategy','Faceless Content','Social Monetization','Money & Personal Finance','Career & Side Hustles','Writing & Communication','Business Systems','AI Automation'],'Image Prompts':['Product Photos','Branding & Logos','Social & Thumbnails','Mockups & Ads']};
+let tab=TBS[0],cat='All',openId=null,fav=new Set(),vals={};
+try{fav=new Set(JSON.parse(localStorage.getItem('dpv')||'[]'))}catch(e){}
+const sv=()=>{try{localStorage.setItem('dpv',JSON.stringify([...fav]))}catch(e){}};
+const out=x=>{const v=vals[x.id]||{};return x.p.replace(/\[([^\]]+)\]/g,(m,k)=>v[k]?v[k]:m)};
+const G=x=>x.k=='Guides & Prompts',mins=x=>Math.max(1,Math.round(x.p.split(/\s+/).length/180));
+const meta=x=>G(x)?'Guide · '+mins(x)+' min read':x.k=='Image Prompts'?'Image prompt':'Prompt',lnk=x=>G(x)?'Read the guide →':x.k=='Image Prompts'?'Use this image prompt →':'Use this prompt →';
+function card(x){const o=x.id===openId,f=G(x)?[]:[...new Set([...x.p.matchAll(/\[([^\]]+)\]/g)].map(m=>m[1]))],v=vals[x.id]||{};
+return `<div class="card${o?' open':''}" data-a="t" data-id="${x.id}"><div class="top"><span class="tag">${meta(x)}</span><button class="star" data-a="s" data-id="${x.id}" aria-label="Save">${fav.has(x.id)?'★':'☆'}</button></div><h3>${x.t}</h3><p>${x.d}</p>`+
+(o?`<div class="body">${f.length?`<div class="flds">${f.map(k=>`<div><label>${esc(k)}</label><input data-id="${x.id}" data-k="${esc(k)}" value="${esc(v[k]||'')}" placeholder="Type here"></div>`).join('')}</div>`:''}<pre id="vpv">${esc(out(x))}</pre>${G(x)?'':`<button class="btn" data-a="c" data-id="${x.id}">Copy prompt</button><button class="cls" data-a="o" data-m="g" data-id="${x.id}">Open in ChatGPT</button><button class="cls" data-a="o" data-m="c" data-id="${x.id}">Open in Claude</button>`}<button class="cls" data-a="x" data-id="${x.id}">Close</button></div>`:`<span class="lnk">${lnk(x)}</span>`)+`</div>`}
+function renderLib(){const q=$('vq').value.toLowerCase().trim();let n=0,h='';
+(q?LIB:[tab]).forEach(t=>ORD[t].forEach(c=>{if(!q&&cat!='All'&&cat!='Saved'&&cat!=c)return;const l=D.filter(x=>x.k==t&&x.c==c&&(cat!='Saved'||fav.has(x.id))&&(!q||(x.t+x.d+x.p).toLowerCase().includes(q)));if(!l.length)return;n+=l.length;h+=`<section class="sec"><h2><span>◆</span>${c}${q?' · '+t:''}<em>${l.length}</em></h2><div class="grid">${l.map(card).join('')}</div></section>`}));
+$('vcount').textContent=n+(n==1?' item':' items');$('vgrid').innerHTML=h||`<div class="empty">${cat=='Saved'?'Star anything to save it here.':'Nothing found. Try another word.'}</div>`;
+[...$('vtabs').children].forEach((b,i)=>b.className=TBS[i]==tab?'on':'')}
+function chips(){$('vchips').innerHTML='';['All','Saved',...(ORD[tab]||[])].forEach(c=>{const b=document.createElement('button');b.textContent=c;b.className=c==cat?'on':'';b.onclick=()=>{cat=c;openId=null;chips();render()};$('vchips').appendChild(b)})}
+TBS.forEach(t=>{const b=document.createElement('button');b.textContent=t+(D.some(x=>x.k==t)?' ('+D.filter(x=>x.k==t).length+')':'');b.onclick=()=>{tab=t;cat='All';openId=null;$('vq').value='';chips();render()};$('vtabs').appendChild(b)});
+$('vq').oninput=()=>{openId=null;render()};
+$('vgrid').onclick=e=>{const t=e.target.closest('[data-a]');if(!t||e.target.tagName=='INPUT')return;const id=+t.dataset.id,a=t.dataset.a,x=D[id];
+if(a=='s'){fav.has(id)?fav.delete(id):fav.add(id);sv();if(fav.has(id))win(t);render()}
+else if(a=='c')cp(out(x),t);
+else if(a=='o'){const w=window.open((t.dataset.m=='g'?'https://chatgpt.com/?q=':'https://claude.ai/new?q=')+encodeURIComponent(out(x)),'_blank','noopener');if(!w)cp(out(x),t)}else if(a=='x'){openId=null;render()}
+else if(a=='t'&&id!==openId){openId=id;render();const el=document.querySelector('.card.open');if(el)el.scrollIntoView({behavior:'smooth',block:'nearest'})}};
+$('vgrid').oninput=e=>{const t=e.target;if(t.dataset.k===undefined)return;const id=+t.dataset.id;(vals[id]=vals[id]||{})[t.dataset.k]=t.value;$('vpv').textContent=out(D[id])};
+chips();render();
+
+function render(){const q=$('vq').value.trim();if(q&&LIB.indexOf(tab)<0){tab=LIB[0];chips()}
+const lib=LIB.indexOf(tab)>=0;$('vchips').style.display=lib?'flex':'none';$('vcount').style.display=lib?'block':'none';
+if(tab=='Goal Packs')packs();else if(tab=='Prompt Doctor')doctor();else renderLib();
+[...$('vtabs').children].forEach((b,i)=>b.className=TBS[i]==tab?'on':'')}
+const go=x=>{tab=x.k;cat='All';openId=x.id;$('vq').value='';chips();render();const el=document.querySelector('#p10 .card.open');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})};
+const PACKS=[['First Client in 7 Days','From zero to your first paid project.',['Land your first freelance client','Offer idea generator','First message DMs','Follow-up sequence','Objection crusher','Send a proposal that gets a yes']],
+['Launch a Digital Product','From idea to first buyers.',['Build your first digital product in a weekend','Price your digital product with confidence','Sales page writer','Founding-member launch post','E-book cover mockup','Turn followers into customers']],
+['Run a Facebook Shop','Sell on Marketplace and Messenger.',['Make your Facebook page look trustworthy','Write a Marketplace listing that sells','Marketplace listing writer','Run a Messenger-first sales flow','Messenger quick replies','Customer reply bank']],
+['A Month of Content in One Sitting','Never run out of posts.',['Plan a week of content in 30 minutes','30-day content calendar','Hook generator','30-second reel script','Repurpose one post into five','Caption rewriter']],
+['Faceless Page Starter','Grow without showing your face.',['Start a faceless page','Faceless niche ideas','Faceless video script','Make faceless videos with free tools','Bold thumbnail background']],
+['Stay Safe and Steady','Protect your accounts and money habits.',['Protect yourself from online scams','Keep your accounts secure','The 4-pocket system for irregular income','Pay yourself first from every sale','Beat the fear of posting']]];
+let dn=new Set();try{dn=new Set(JSON.parse(localStorage.getItem('dpk')||'[]'))}catch(e){}
+function packs(){$('vgrid').innerHTML=PACKS.map(p=>{const it=p[2].map(t=>D.find(x=>x.t==t)).filter(Boolean);return `<section class="sec"><h2><span>◆</span>${p[0]}<em>${it.filter(x=>dn.has(x.id)).length}/${it.length} done</em></h2><p style="margin:-6px 0 8px;color:var(--mut)">${p[1]} Follow the steps in order.</p>${it.map((x,i)=>`<button class="pk${dn.has(x.id)?' done':''}" data-p="${x.id}"><b>${dn.has(x.id)?'✓':i+1}</b><span>${x.t}</span><small>${meta(x)}</small></button>`).join('')}</section>`}).join('');
+$('vgrid').querySelectorAll('.pk').forEach(b=>b.onclick=()=>{const x=D[+b.dataset.p];dn.add(x.id);try{localStorage.setItem('dpk',JSON.stringify([...dn]))}catch(e){}go(x)})}
+function doctor(){$('vgrid').innerHTML=`<div class="out" style="margin-top:0"><h3>Prompt Doctor</h3><p>Paste any prompt you use. It checks the 4 parts that make AI answers better and builds a stronger version for you.</p><textarea id="vdt" rows="5" placeholder="e.g. write a post about my cakes"></textarea><button class="btn" id="vdb">Check my prompt</button><div id="vdo"></div></div>`;
+$('vdb').onclick=()=>{const t=$('vdt').value.trim();if(!t)return;const n=t.split(/\s+/).length,c=[['Role','Tell the AI who to be, like "Act as a friendly sales coach."',/\b(act as|you are|as a|as an)\b/i.test(t),'Act as [role, e.g. a friendly sales coach for Filipino online sellers].'],['Task','Say exactly what you want, like "write 5 captions."',/\b(write|create|give|list|build|make|explain|summari[sz]e|rewrite|plan|outline|draft|generate)\b/i.test(t),''],['Context','Add who it is for, what you sell, and your goal.',n>=25,'Context: [who it is for, what you sell, your goal].'],['Format','Say the length, tone, and structure.',/\b(under \d+|words|bullet|table|steps|numbered|tone|taglish|format|\d+ (ideas|options|examples|captions))\b/i.test(t),'Format: [length, tone, structure, e.g. under 100 words, Taglish, numbered list].']],sc=c.filter(x=>x[2]).length*25,imp=[c[0][2]?'':c[0][3],t,c[2][2]?'':c[2][3],c[3][2]?'':c[3][3]].filter(Boolean).join('\n');
+$('vdo').innerHTML=`<div class="box"><b>Score: ${sc}/100</b>\n${c.map(x=>(x[2]?'✓ ':'✗ ')+x[0]+': '+(x[2]?'Looks good.':x[1])).join('\n')}</div>`+(sc<100?`<div class="box"><b>Stronger version (fill in the brackets)</b>\n${esc(imp)}</div><button class="btn alt" id="vdc">Copy stronger version</button>`:`<div class="box">Great prompt. It has all 4 parts.</div>`);
+if($('vdc'))$('vdc').onclick=e=>cp(imp,e.target);win($('vdb'))}}
+function today(){const p=D.filter(x=>x.k=='Creator Prompts'),x=p[Math.floor(Date.now()/864e5)%p.length];$('vtoday').innerHTML=`<div class="out" style="margin:0 0 18px"><small style="color:var(--gold)">TODAY'S PICK</small><h3>${x.t}</h3><p style="margin:4px 0 0">${x.d}</p><button class="btn alt" id="vtd">Try it now →</button></div>`;$('vtd').onclick=()=>go(x)}
+today();$('vn').textContent=D.length;
+})();
 </script></body></html>
